@@ -1,6 +1,6 @@
-Documentation 
+Documentation <br>
 
-composer update
-php artisan key:generate
-php artisan migrate
-php artisan storage:link
+composer update<br>
+php artisan key:generate<br>
+php artisan migrate<br>
+php artisan storage:link<br>
