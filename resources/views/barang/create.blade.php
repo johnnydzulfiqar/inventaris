@@ -80,11 +80,13 @@ Index User
                   </div>
                 </div>
               </div>
-              <label for="type">Role</label>
+              <label for="type">Ruangan</label>
               <select name="ruangan_id" id="ruangan_id" class="form-control">
-                <option value="">Pilih Ruangan</option>
+                {{-- <option value="">Pilih Ruangan</option> --}}
                 @foreach ($ruangan as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_ruangan }}</option>
+                    {{-- <option @selected(old('nama_ruangan', @$item->nama_ruangan) == '' ) value="">- Pilih Lantai -</option> --}}
+                    {{-- <option @selected(old('id', @$item->id) == @$item->id) value="{{ @$item->id }}">{{ $item->nama_ruangan }}</option> --}}
                 @endforeach
             </select>
               <div class="mb-3 row mt-3">
@@ -93,7 +95,7 @@ Index User
                   @if(!empty(@$barang->foto_barang))
                   <img src="{{ $barang->foto_barang }}" class="mb-3" alt="foto" width="100px" />
                   @endif
-                      <input type="file" class="form-control" name="foto_barang" id="foto_barang" placeholder="foto_produk">
+                      <input type="file" class="form-control" name="foto_barang" id="foto_barang" placeholder="foto_barang">
                   </div>
               </div>
               <label for="type">Status</label>

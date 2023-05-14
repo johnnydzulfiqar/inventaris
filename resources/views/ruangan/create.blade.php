@@ -42,25 +42,14 @@ Index Ruangan
                 </div>
               </div>
               
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Lantai</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                    <input
-                      type="text"
-                      id="lantai"
-                      name="lantai"
-                      value="{{ old('lantai', @$ruangan->lantai) }}"
-                      class="form-control"
-                     
-                      aria-describedby="basic-icon-default-email2"
-                    />
-                    
-                  </div>
-                  
-                </div>
-              </div>
+              <label for="nama_ruangan">Lantai</label>
+              <select id="lantai" name="lantai" class="form-select">
+                <option @selected(old('lantai', @$ruangan->lantai) == '' ) value="">- Pilih Lantai -</option>
+                <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 1') value="Lantai 1">Lantai 1</option>
+                <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 2') value="Lantai 2">Lantai 2</option>
+                <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 3') value="Lantai 3">Lantai 3</option>
+                <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 4') value="Lantai 4">Lantai 4</option>
+              </select>
               
               
               {{-- <div class="mb-3 row mt-3">

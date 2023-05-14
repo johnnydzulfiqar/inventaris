@@ -88,9 +88,9 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
     Route::get('/kepala/index', [BarangController::class, 'index'])->name('kepala.index');
     // Route::get('/kepala/create', [BarangController::class, 'create'])->name('kepala.create');
     // Route::post('/kepala/create', [BarangController::class, 'store']);
-    Route::get('/barang/{barang}/edit', [BarangController::class, 'edit'])->name(name: 'barang.edit');
-    Route::patch('/barang/{barang}', [BarangController::class, 'update'])->name(name: 'barang.update');
-    Route::delete('/barang/{barang}', [BarangController::class, 'destroy'])->name(name: 'barang.delete');
-    Route::get('/barang/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
+    // Route::get('/barang/{barang}/edit', [BarangController::class, 'edit'])->name(name: 'barang.edit');
+    // Route::patch('/barang/{barang}', [BarangController::class, 'update'])->name(name: 'barang.update');
+    // Route::delete('/barang/{barang}', [BarangController::class, 'destroy'])->name(name: 'barang.delete');
+    // Route::get('/barang/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
     Route::post('/barang/{barang}/laporan', [BarangController::class, 'update_laporan']);
 });
