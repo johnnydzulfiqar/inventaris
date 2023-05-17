@@ -44,6 +44,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::delete('/ruangan/{ruangan}', [RuanganController::class, 'destroy'])->name(name: 'ruangan.delete');
     Route::get('/ruangan/{ruangan}/show', [RuanganController::class, 'show'])->name('ruangan.show');
     Route::get('/barang/index', [BarangController::class, 'index'])->name('barang.index');
+    Route::get('/barang/indexkeluar', [BarangController::class, 'indexkeluar'])->name('barang.indexkeluar');
     Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
     Route::post('/barang/create', [BarangController::class, 'store']);
     Route::get('/barang/{barang}/edit', [BarangController::class, 'edit'])->name(name: 'barang.edit');
@@ -86,6 +87,7 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
     // Route::get('/', [RuanganController::class, 'index'])->name('index');
     // Route::get('/home', [BarangController::class, 'index'])->name('index');
     Route::get('/kepala/index', [BarangController::class, 'index'])->name('kepala.index');
+    Route::get('/kepala/indexkeluar', [BarangController::class, 'indexkeluar'])->name('barang.indexkeluar');
     // Route::get('/kepala/create', [BarangController::class, 'create'])->name('kepala.create');
     // Route::post('/kepala/create', [BarangController::class, 'store']);
     // Route::get('/barang/{barang}/edit', [BarangController::class, 'edit'])->name(name: 'barang.edit');

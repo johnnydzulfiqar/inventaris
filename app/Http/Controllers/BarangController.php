@@ -25,9 +25,29 @@ class BarangController extends Controller
 
         // $barang['q'] = $q;
         // return view('barang.index', $barang);
-        $data = Barang::all();
+        $data = Barang::all()->where('status', '=', 'Masuk'); //buat barang masuk
+        // $data = Barang::all();
         return view('barang.index', compact('data'));
     }
+    public function indexkeluar(Request $request)
+    {
+        // $q = $request->get('q');
+
+        // $barang['result'] = Barang::where(function ($query) use ($q) {
+        //     $query->where('kategori_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('nama_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('stok', 'like', '%' . $q . '%');
+        //     $query->orwhere('harga_produk', 'like', '%' . $q . '%');
+        // })->paginate();
+
+        // $barang['q'] = $q;
+        // return view('barang.index', $barang);
+        $datakeluar = Barang::all()->where('status', '=', 'Keluar'); //buat barang masuk
+        // $data = Barang::all();
+        return view('barang.indexkeluar', compact('datakeluar'));
+    }
+
+
     public function create()
     {
         $ruangan = Ruangan::all();

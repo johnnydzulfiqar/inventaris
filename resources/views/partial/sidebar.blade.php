@@ -101,12 +101,18 @@
             @endif
             @if ( auth()->user()->type == 'user')
             <a href="/barang/index" class="menu-link">
-              <div data-i18n="Basic Inputs">Tabel Barang</div>
+              <div data-i18n="Basic Inputs">Tabel Barang Masuk</div>
+            </a>
+            <a href="/barang/indexkeluar" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Barang Keluar</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'kepala')
             <a href="/kepala/index" class="menu-link">
-              <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang</div>
+              <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Masuk</div>
+            </a>
+            <a href="/kepala/indexkeluar" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Keluar</div>
             </a>
             @endif
           </li>

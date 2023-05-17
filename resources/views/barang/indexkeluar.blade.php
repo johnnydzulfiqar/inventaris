@@ -36,7 +36,7 @@ Index User
 
         </tr>
       </thead>
-      @foreach ($data as $item)
+      @foreach ($datakeluar as $item)
       <tbody class="table-border-bottom-0">
         <tr>
           <td>{{ $loop->iteration }}</td>
@@ -60,9 +60,6 @@ Index User
                           <div class="dropdown-menu">
                             <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
                               ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                            >
-                            <a class="dropdown-item" href="/barang/{{ $item->id }}/show"
-                              ><i class="bx bx-edit-alt me-2"></i> Detail</a
                             >
                             <input type="submit" class="btn btn-danger btn-sm" value="delete">
                                                 
