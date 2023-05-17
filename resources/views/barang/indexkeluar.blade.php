@@ -29,9 +29,9 @@ Index User
           <th>Harga Barang</th>
           <th>Lokasi Barang</th>
           <th>Status</th>
-          @if ( auth()->user()->type == 'user')       
+          {{-- @if ( auth()->user()->type == 'user')        --}}
           <th>Action</th>
-          @endif
+          {{-- @endif --}}
           <th>Laporan</th>
 
         </tr>
@@ -48,26 +48,37 @@ Index User
                         <td>{{ $item->ruangan->nama_ruangan }}</td>
                         <td>{{ $item->status }}</td>
                         
-                          @if ( auth()->user()->type == 'user')   
+                         
                           <td>      
-                        <form action="/barang/{{  $item->id }}" method="POST">
-                          @csrf
-                         @method('delete')
-                        <div class="dropdown">
-                          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                          </button>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
-                              ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                            >
-                            <input type="submit" class="btn btn-danger btn-sm" value="delete">
-                                                
-                      </div>
-                    </div>
-                  </form>  
+                            <form action="/barang/{{  $item->id }}" method="POST">
+                              @csrf
+                             @method('delete')
+                            <div class="dropdown">
+                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                             
+                              <div class="dropdown-menu">
+                                @if ( auth()->user()->type == 'user') 
+                                <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
+                                  ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                                >
+                                <a class="dropdown-item" href="/barang/{{ $item->id }}/show"
+                                  ><i class="bx bx-edit-alt me-2"></i> Detail</a
+                                >
+                                <input type="submit" class="btn btn-danger btn-sm" value="delete">
+                                @endif    
+                                @if ( auth()->user()->type == 'kepala') 
+                                <a class="dropdown-item" href="/kepala/{{ $item->id }}/show"
+                                  ><i class="bx bx-edit-alt me-2"></i> Detail</a
+                                >
+                                @endif  
+                                               
+                          </div>
+                        </div>
+                      </form>  
                         </td>
-                        @endif
+                        
                         @if($item->laporan === 'Belum Konfirmasi')
                         <td style="color: red">
                         {{ $item->laporan  }}</td>
