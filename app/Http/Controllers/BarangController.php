@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ruangan;
 use App\Models\Barang;
 use App\Models\Kepala;
-
+use PDF;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -138,5 +138,11 @@ class BarangController extends Controller
         // $stok->save();
         // dd($transaksi);
         return redirect('/kepala/index');
+    }
+    public function cetak_pdf()
+    {
+        $data = Barang::all()->where('laporan', '=', 'Sudah Konfirmasi');
+        $pdf = PDF::loadview('barang_pdf', ['data' => $data]);
+        return $pdf->download('laporan-barang.pdf');
     }
 }

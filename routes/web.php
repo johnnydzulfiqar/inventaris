@@ -96,4 +96,6 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
     // Route::delete('/barang/{barang}', [BarangController::class, 'destroy'])->name(name: 'barang.delete');
     // Route::get('/barang/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
     Route::post('/barang/{barang}/laporan', [BarangController::class, 'update_laporan']);
+    // Route::get('/pegawai', [PegawaiController::class, 'index']);
+    Route::get('/kepala/cetak_pdf', [BarangController::class, 'cetak_pdf']);
 });
