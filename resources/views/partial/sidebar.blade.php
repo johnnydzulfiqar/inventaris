@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
       <a href="index.html" class="app-brand-link">
-        <span class="app-brand-logo demo">
+        {{-- <span class="app-brand-logo demo">
           <svg
             width="25"
             viewBox="0 0 25 42"
@@ -55,8 +55,9 @@
               </g>
             </g>
           </svg>
-        </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+        </span> --}}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/SMK_Negeri_1_Cimahi.png" alt="foto" width="50px">
+        <h4 class="app-brand-text  menu-text fw-bolder ms-2">SMK 1 CIMAHI</h4>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
