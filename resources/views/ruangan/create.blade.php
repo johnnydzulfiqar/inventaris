@@ -38,6 +38,11 @@ Index Ruangan
                       value="{{ old('nama_ruangan', @$ruangan->nama_ruangan) }}"
                       aria-describedby="basic-icon-default-fullname2"
                     />
+                    @error('nama_ruangan')
+              <div class="alert alert-danger">
+                  {{ $message }}
+              </div>
+          @enderror
                   </div>
                 </div>
               </div>
@@ -50,6 +55,11 @@ Index Ruangan
                 <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 3') value="Lantai 3">Lantai 3</option>
                 <option @selected(old('lantai', @$ruangan->lantai) == 'Lantai 4') value="Lantai 4">Lantai 4</option>
               </select>
+              @error('lantai')
+              <div class="alert alert-danger">
+                  {{ $message }}
+              </div>
+          @enderror
               
               
               {{-- <div class="mb-3 row mt-3">

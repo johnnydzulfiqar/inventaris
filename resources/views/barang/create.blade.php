@@ -38,6 +38,11 @@ Index User
                       value="{{ old('nama_barang', @$barang->nama_barang) }}"
                       aria-describedby="basic-icon-default-fullname2"
                     />
+                    @error('nama_barang')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
                   </div>
                 </div>
               </div>
@@ -56,7 +61,11 @@ Index User
                      
                       aria-describedby="basic-icon-default-email2"
                     />
-                    
+                    @error('stok')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
                   </div>
                   
                 </div>
@@ -77,6 +86,11 @@ Index User
                      
                       aria-describedby="basic-icon-default-fullname2"
                     />
+                    @error('harga_barang')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
                   </div>
                 </div>
               </div>
@@ -98,6 +112,11 @@ Index User
                       <input type="file" class="form-control" name="foto_barang" id="foto_barang" placeholder="foto_barang">
                   </div>
               </div>
+              @error('foto_barang')
+              <div class="alert alert-danger">
+                  {{ $message }}
+              </div>
+          @enderror
               <label for="type">Status</label>
               <select id="status" name="status" class="form-select">
                 <option value="Masuk">Masuk</option>
