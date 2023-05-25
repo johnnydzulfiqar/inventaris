@@ -38,7 +38,7 @@
                         <td>{{ $item->nama_barang }}</td>
                         <td>{{ $item->stok }}</td>
                         <td>{{ $item->harga_barang }}</td>
-                        <td>{{ $item->nama_ruangan }}</td>
+                        <td>{{ $item->ruangan->nama_ruangan }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->laporan }}</td>
 
