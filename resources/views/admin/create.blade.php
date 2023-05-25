@@ -62,6 +62,42 @@ Index User
                 </div>
               </div>
               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">NIK</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    <input
+                      type="text"
+                      name="nik"
+                      class="form-control"
+                      id="nik"
+                      value="{{ old('nik', @$admin->nik) }}"
+                      aria-describedby="basic-icon-default-fullname2"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Alamat</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    <input
+                      type="text"
+                      name="alamat"
+                      class="form-control"
+                      id="alamat"
+                      value="{{ old('alamat', @$admin->alamat) }}"
+                      aria-describedby="basic-icon-default-fullname2"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
                 <label class="col-sm-2 form-label" for="basic-icon-default-phone">Password</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
@@ -85,6 +121,8 @@ Index User
                 <option value="0">Staff Tata Usaha</option>
                 <option value="1">Admin</option>
                 <option value="2">Kepala Tata Usaha</option>
+                <option value="3">Staff atau Guru</option>
+
               </select>
               {{-- <div class="mb-3 row mt-3">
                 <label for="foto_produk" class="col-sm-2 col-form-label">Foto</label>

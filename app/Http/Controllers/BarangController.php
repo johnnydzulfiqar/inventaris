@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Ruangan;
 use App\Models\Barang;
 use App\Models\Kepala;
+use App\Models\User;
+use App\Models\Keluar;
+
+
 use PDF;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -26,10 +30,27 @@ class BarangController extends Controller
         // $barang['q'] = $q;
         // return view('barang.index', $barang);
         $data = Barang::all()->where('status', '=', 'Masuk'); //buat barang masuk
-        // $data = Barang::all();
+        // $data = User::all();
         return view('barang.index', compact('data'));
     }
-    public function indexkeluar(Request $request)
+    // public function indexkeluar(Request $request)
+    // {
+    //     // $q = $request->get('q');
+
+    //     // $barang['result'] = Barang::where(function ($query) use ($q) {
+    //     //     $query->where('kategori_produk', 'like', '%' . $q . '%');
+    //     //     $query->orwhere('nama_produk', 'like', '%' . $q . '%');
+    //     //     $query->orwhere('stok', 'like', '%' . $q . '%');
+    //     //     $query->orwhere('harga_produk', 'like', '%' . $q . '%');
+    //     // })->paginate();
+
+    //     // $barang['q'] = $q;
+    //     // return view('barang.index', $barang);
+    //     $datakeluar = Barang::all()->where('status', '=', 'Keluar'); //buat barang masuk
+    //     // $data = Barang::all();
+    //     return view('barang.indexkeluar', compact('datakeluar'));
+    // }
+    public function indexpending(Request $request)
     {
         // $q = $request->get('q');
 
@@ -42,10 +63,28 @@ class BarangController extends Controller
 
         // $barang['q'] = $q;
         // return view('barang.index', $barang);
-        $datakeluar = Barang::all()->where('status', '=', 'Keluar'); //buat barang masuk
+        $datapending = Barang::all()->where('status', '=', 'Pending'); //buat barang masuk
         // $data = Barang::all();
-        return view('barang.indexkeluar', compact('datakeluar'));
+        return view('barang.indexpending', compact('datapending'));
     }
+    public function indexreject(Request $request)
+    {
+        // $q = $request->get('q');
+
+        // $barang['result'] = Barang::where(function ($query) use ($q) {
+        //     $query->where('kategori_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('nama_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('stok', 'like', '%' . $q . '%');
+        //     $query->orwhere('harga_produk', 'like', '%' . $q . '%');
+        // })->paginate();
+
+        // $barang['q'] = $q;
+        // return view('barang.index', $barang);
+        $datareject = Barang::all()->where('status', '=', 'Reject'); //buat barang masuk
+        // $data = Barang::all();
+        return view('barang.indexreject', compact('datareject'));
+    }
+
 
 
     public function create()
@@ -74,10 +113,18 @@ class BarangController extends Controller
         // $data->nama_barang = $request->nama_barang;
         // $data->stok = $request->stok;
         // $data->harga_barang = $request->harga_barang;
-        // $data->foto_barang = $request->foto_barang;
-        // $data->status = $request->status;
+        // if ($request->hasFile('foto_barang')) {
+        //     $fileName = $request->foto_barang->getClientOriginalName();
+        //     $request->foto_barang->storeAs('barang', $fileName);
+        //     $data['foto_barang'] = $fileName;
+        // }
         // $data->ruangan_id = $request->ruangan_id;
+        // $data->status = $request->status;
+        // $data->laporan = $request->laporan;
+        // $data->user_id = Auth::id();
         // $data->save();
+        // dd($data);
+        // Barang::create();
         Barang::create($input);
         return redirect('/barang/index')->with('success', 'Data Berhasil Disimpan');
     }
@@ -98,18 +145,18 @@ class BarangController extends Controller
                 'nama_barang' => 'required',
                 'stok' => 'required|numeric',
                 'harga_barang' => 'required|numeric',
-                'foto_barang' => 'required|mimes:jpg,png|max:1024',
+                // 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
             ];
         $this->validate($request, $rules);
         $input = $request->all();
-
+        $input = $request->except('user_id');
         if ($request->hasFile('foto_barang')) {
             $fileName = $request->foto_barang->getClientOriginalName();
-
             $request->foto_barang->storeAs('barang', $fileName);
             $input['foto_barang'] = $fileName;
         }
+
         // $data->nama_barang = $request->nama_barang;
         // $data->stok = $request->stok;
         // $data->harga_barang = $request->harga_barang;
@@ -144,5 +191,11 @@ class BarangController extends Controller
         $data = Barang::all()->where('laporan', '=', 'Sudah Konfirmasi');
         $pdf = PDF::loadview('barang_pdf', ['data' => $data]);
         return $pdf->download('laporan-barang.pdf');
+    }
+    public function cetak_pdf2()
+    {
+        $data = Keluar::all()->where('laporan', '=', 'Sudah Konfirmasi');
+        $pdf = PDF::loadview('barang_pdf2', ['data' => $data]);
+        return $pdf->download('laporan-barang-keluar.pdf');
     }
 }

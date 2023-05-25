@@ -35,10 +35,10 @@
 			<tr>
 				<td>{{ $loop->iteration }}</td>
 				{{-- <td><img src="{{ $item->foto_barang}}" alt="foto" width="100px"></td> --}}
-                        <td>{{ $item->nama_barang }}</td>
+                        <td>{{ $item->barang->nama_barang }}</td>
                         <td>{{ $item->stok }}</td>
-                        <td>{{ $item->harga_barang }}</td>
-                        <td>{{ $item->nama_ruangan }}</td>
+                        <td>{{ $item->barang->harga_barang }}</td>
+                        <td>{{ $item->barang->ruangan->nama_ruangan }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->laporan }}</td>
 

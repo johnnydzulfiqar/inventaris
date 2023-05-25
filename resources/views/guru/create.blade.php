@@ -10,7 +10,7 @@ Index User
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
         <!-- Basic with Icons -->
-        <form action="{{ !empty($barang) ? route('barang.update', $barang): url('barang/create')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ !empty($barang) ? route('guru.update', $barang): url('guru/create')}}" method="POST" enctype="multipart/form-data">
             @if(!empty($barang))
             @method('PATCH')
             @endif
@@ -117,16 +117,18 @@ Index User
                   {{ $message }}
               </div>
           @enderror
+          @if ( auth()->user()->type == 'user')   
               <label for="type">Status</label>
               <select id="status" name="status" class="form-select">
                 <option value="Masuk">Masuk</option>
-                {{-- <option value="Keluar">Keluar</option> --}}
-                <option value="Reject">Reject</option>
+                <option value="Keluar">Keluar</option>
+                {{-- <option value="2">Kepala Tata Usaha</option> --}}
               </select>
             </div>
-          {{-- <input style="display: none;" type="text" name="user_id" value="{{ old('user_id', @$barang->user_id) }}" class="form-control"> --}}
-          <input style="display: none;" type="text" name="user_id" value={{ Auth::id() }} class="form-control">  
-          <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">
+            @endif
+            <input style="display: none;" type="text" hidden name="user_id" value="{{ Auth::id() }}" class="form-control">
+            <input style="display: none;" type="text" hidden name="status" value="Pending" class="form-control">
+            <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">
               <div class="row justify-content-end">
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-primary">Send</button>

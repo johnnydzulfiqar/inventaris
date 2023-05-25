@@ -23,6 +23,8 @@ Index User
           {{-- <th>Foto</th> --}}
           <th>Nama</th>
           <th>Email</th>
+          <th>Alamat</th>
+          <th>NIK</th>
           <th>Jabatan</th>
           <th>Actions</th>
         </tr>
@@ -34,6 +36,8 @@ Index User
                         {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
+                        <td>{{ $item->alamat }}</td>
+                        <td>{{ $item->nik }}</td>
                         <td>{{ $item->type }}</td>
                         <td>
                         

@@ -23,6 +23,8 @@ Index Ruangan
           {{-- <th>Foto</th> --}}
           <th>Nama Ruangan</th>
           <th>Lantai</th>
+          <th>Kategori</th>
+
           <th>Action</th>
 
         </tr>
@@ -34,6 +36,8 @@ Index Ruangan
                         {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                         <td>{{ $item->nama_ruangan }}</td>
                         <td>{{ $item->lantai }}</td>
+                        <td>{{ $item->kategori }}</td>
+
                         
                         <td>                  
                          

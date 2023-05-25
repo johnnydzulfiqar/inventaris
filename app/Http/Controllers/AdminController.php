@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -34,18 +36,28 @@ class AdminController extends Controller
                 'name' => 'required',
                 'email' => 'required',
                 'password' => 'required',
+                'alamat' => 'required',
+                'nik' => 'required|numeric',
                 // 'foto_produk' => 'required|mimes:jpg,png|max:1024',
                 'type' => 'required',
             ];
         $this->validate($request, $rules);
-        $input = $request->all();
+        $data = $request->all();
         // if ($request->hasFile('foto_produk')) {
         //     $fileName = $request->foto_produk->getClientOriginalName();
 
         //     $request->foto_produk->storeAs('admin', $fileName);
         //     $input['foto_produk'] = $fileName;
         // }
-        User::create($input);
+        // User::create($input);
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'alamat' => $data['alamat'],
+            'nik' => $data['nik'],
+            'password' => Hash::make($data['password']),
+            'type' => $data['type'],
+        ]);
         return redirect('/admin/index')->with('success', 'Data Berhasil Disimpan');
     }
     public function show($id)
@@ -70,6 +82,7 @@ class AdminController extends Controller
             ];
         $this->validate($request, $rules);
         $input = $request->all();
+
         // if ($request->hasFile('foto_produk')) {
         //     $fileName = $request->foto_produk->getClientOriginalName();
 
@@ -82,9 +95,9 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $admin = User::find($id);
-        if ($admin->type() == '1') {
-            abort(401, 'Admin cannot delete admins!');
-        }
+        // if ($admin->type() == '1') {
+        //     abort(401, 'Admin cannot delete admins!');
+        // }
         $admin->delete();
         return redirect('/admin/index')->with('success', 'Data Berhasil Dihapus');
     }

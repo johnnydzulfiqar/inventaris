@@ -29,16 +29,16 @@ Index User
           {{-- <th>Harga Barang</th> --}}
           <th>Lokasi Barang</th>
           <th>Status</th>
-          
+         
           <th>Request</th>
-
           <th>Laporan</th>
           @if ( auth()->user()->type == 'user')       
           <th>Action</th>
           @endif
+
         </tr>
       </thead>
-      @foreach ($datakeluar as $item)
+      @foreach ($datareject as $item)
       <tbody class="table-border-bottom-0">
         <tr>
           <td>{{ $loop->iteration }}</td>

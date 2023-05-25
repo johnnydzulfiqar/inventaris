@@ -15,6 +15,14 @@ Index User
         <span class="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Tambah Barang
       </a>    
       @endif
+      @if ( auth()->user()->type == 'guru')   
+      <a type="button" class="btn btn-outline-primary" href="{{ url('guru/create') }}">
+        <span class="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Request Barang
+      </a>    
+      @endif
+      @if ( auth()->user()->type == 'kepala') 
+      <a href="/kepala/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a>
+      @endif
     </div>
   </div>
   <div class="table-responsive text-nowrap">
@@ -33,14 +41,17 @@ Index User
           <th>Request</th>
 
           <th>Laporan</th>
-          @if ( auth()->user()->type == 'user')       
+                 
           <th>Action</th>
-          @endif
+          
+
         </tr>
       </thead>
-      @foreach ($datakeluar as $item)
+      @foreach ($data as $item)
       <tbody class="table-border-bottom-0">
         <tr>
+          @auth
+          @if ($user_id = Auth::user()->id === $item->user_id)  
           <td>{{ $loop->iteration }}</td>
                         {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                         <td><img src="{{ $item->foto_barang}}" alt="foto" width="100px"></td>
@@ -52,7 +63,9 @@ Index User
                         
                          
                           
-                        <td>{{ $item->user->name }}</td>
+                  <td>{{ $item->user->name }}</td>
+                        </td>
+                      
                         @if($item->laporan === 'Belum Konfirmasi')
                         <td style="color: red">
                         {{ $item->laporan  }}</td>
@@ -62,7 +75,10 @@ Index User
                             {{ $item->laporan  }}</td>
                             @endif
                             @if ( auth()->user()->type == 'kepala')
-                      <td><form action="/barang/{barang}/laporan" method="post" enctype="multipart/form-data">
+                      <td>
+                       
+
+                        <form action="/barang/{barang}/laporan" method="post" enctype="multipart/form-data">
                         @csrf 
                         <input style="display: none;" type="text" hidden name="id" value="{{ $item->id }}" class="form-control">
                         {{-- <input style="display: none;" type="text" hidden name="barang_id" value="{{ $item->admin->id }}" class="form-control">
@@ -73,6 +89,7 @@ Index User
                     @else
                     @endif
                     @endif
+                    
                 </form>  </td>
                 <td>      
                   <form action="/barang/{{  $item->id }}" method="POST">
@@ -84,26 +101,16 @@ Index User
                     </button>
                    
                     <div class="dropdown-menu">
-                      @if ( auth()->user()->type == 'user') 
-                      <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
-                        ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="/barang/{{ $item->id }}/show"
-                        ><i class="bx bx-edit-alt me-2"></i> Detail</a
-                      >
-                      <input type="submit" class="btn btn-danger btn-sm" value="delete">
-                      @endif    
-                      @if ( auth()->user()->type == 'kepala') 
-                      <a class="dropdown-item" href="/kepala/{{ $item->id }}/show"
-                        ><i class="bx bx-edit-alt me-2"></i> Detail</a
-                      >
-                      @endif  
-                                     
+
+                      <a class="dropdown-item" href="/guru/{{ $item->id }}/show"
+                        ><i class="bx bx-edit-alt me-2"></i> Detail</a>                                                       
                 </div>
               </div>
             </form>  
-              </td>
+                </td>
         </tr>
+        @endif
+        @endauth 
         @endforeach
         
               </div>

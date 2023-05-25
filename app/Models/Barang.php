@@ -19,6 +19,8 @@ class Barang extends Model
         'status',
         'laporan',
         'ruangan_id',
+        'user_id',
+
     ];
     public function getFotoBarangAttribute()
     {
@@ -29,6 +31,10 @@ class Barang extends Model
     public function ruangan()
     {
         return $this->belongsTo(Ruangan::class, 'ruangan_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
     // public function kepala()
     // {

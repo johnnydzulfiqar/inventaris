@@ -10,7 +10,7 @@ Index User
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
         <!-- Basic with Icons -->
-        <form action="{{ !empty($barang) ? route('barang.update', $barang): url('barang/create')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ !empty($keluar) ? route('keluar.update', $keluar): url('keluar/create')}}" method="POST" enctype="multipart/form-data">
             @if(!empty($barang))
             @method('PATCH')
             @endif
@@ -35,7 +35,7 @@ Index User
                       name="nama_barang"
                       class="form-control"
                       id="nama_barang"
-                      value="{{ old('nama_barang', @$barang->nama_barang) }}"
+                      value="{{ old('nama_barang', @$keluar->barang->nama_barang) }}"
                       aria-describedby="basic-icon-default-fullname2"
                     />
                     @error('nama_barang')
@@ -56,7 +56,7 @@ Index User
                       type="text"
                       id="stok"
                       name="stok"
-                      value="{{ old('stok', @$barang->stok) }}"
+                      value="{{ old('stok', @$keluar->stok) }}"
                       class="form-control"
                      
                       aria-describedby="basic-icon-default-email2"
@@ -81,7 +81,7 @@ Index User
                       type="text"
                       id="harga_barang"
                       name="harga_barang"
-                      value="{{ old('harga_barang', @$barang->harga_barang) }}"
+                      value="{{ old('harga_barang', @$keluar->harga_barang) }}"
                       class="form-control fullname2-mask"
                      
                       aria-describedby="basic-icon-default-fullname2"
@@ -95,19 +95,12 @@ Index User
                 </div>
               </div>
               <label for="type">Ruangan</label>
-              <select name="ruangan_id" id="ruangan_id" class="form-control">
-                {{-- <option value="">Pilih Ruangan</option> --}}
-                @foreach ($ruangan as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_ruangan }}</option>
-                    {{-- <option @selected(old('nama_ruangan', @$item->nama_ruangan) == '' ) value="">- Pilih Lantai -</option> --}}
-                    {{-- <option @selected(old('id', @$item->id) == @$item->id) value="{{ @$item->id }}">{{ $item->nama_ruangan }}</option> --}}
-                @endforeach
-            </select>
+              
               <div class="mb-3 row mt-3">
                 <label for="foto_barang" class="col-sm-2 col-form-label">Foto</label>
                 <div class="col-sm-5">
-                  @if(!empty(@$barang->foto_barang))
-                  <img src="{{ $barang->foto_barang }}" class="mb-3" alt="foto" width="100px" />
+                  @if(!empty(@$keluar->foto_barang))
+                  <img src="{{ $keluar->foto_barang }}" class="mb-3" alt="foto" width="100px" />
                   @endif
                       <input type="file" class="form-control" name="foto_barang" id="foto_barang" placeholder="foto_barang">
                   </div>
@@ -120,7 +113,7 @@ Index User
               <label for="type">Status</label>
               <select id="status" name="status" class="form-select">
                 <option value="Masuk">Masuk</option>
-                {{-- <option value="Keluar">Keluar</option> --}}
+                <option value="Keluar">Keluar</option>
                 <option value="Reject">Reject</option>
               </select>
             </div>

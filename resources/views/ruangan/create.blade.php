@@ -60,6 +60,19 @@ Index Ruangan
                   {{ $message }}
               </div>
           @enderror
+          <label for="kategori">Kategori Ruangan</label>
+              <select id="kategori" name="kategori" class="form-select">
+                <option @selected(old('kategori', @$ruangan->kategori) == '' ) value="">- Pilih Lantai -</option>
+                <option @selected(old('kategori', @$ruangan->kategori) == 'Ruang Kelas') value="Ruang Kelas">Ruang Kelas</option>
+                <option @selected(old('kategori', @$ruangan->kategori) == 'Ruang Lab') value="Ruang Lab">Ruang Lab</option>
+                <option @selected(old('kategori', @$ruangan->kategori) == 'Ruang Serba Guna') value="Ruang Serba Guna">Ruang Serba Guna</option>
+
+              </select>
+              @error('kategori')
+              <div class="alert alert-danger">
+                  {{ $message }}
+              </div>
+          @enderror
               
               
               {{-- <div class="mb-3 row mt-3">

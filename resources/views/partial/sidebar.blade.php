@@ -79,6 +79,9 @@
           @if ( auth()->user()->type == 'admin') 
         <a href="/admin/index" class="menu-link">
           @endif
+          @if ( auth()->user()->type == 'guru') 
+        <a href="/guru/index" class="menu-link">
+          @endif
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
@@ -104,15 +107,21 @@
             <a href="/barang/index" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Masuk</div>
             </a>
-            <a href="/barang/indexkeluar" class="menu-link">
+            <a href="/keluar/index" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Keluar</div>
+            </a>
+            <a href="/barang/indexpending" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Barang Pending</div>
+            </a>
+            <a href="/barang/indexreject" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Barang Reject</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'kepala')
             <a href="/kepala/index" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Masuk</div>
             </a>
-            <a href="/kepala/indexkeluar" class="menu-link">
+            <a href="/keluar2/index" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Keluar</div>
             </a>
             @endif

@@ -55,6 +55,8 @@ class LoginController extends Controller
                 return redirect()->route('kepala.index');
             } else if (auth()->user()->type == 'user') {
                 return redirect()->route('barang.index');
+            } else if (auth()->user()->type == 'guru') {
+                return redirect()->route('guru.index');
             } else {
                 return redirect()->route('login');
             }
