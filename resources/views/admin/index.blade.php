@@ -38,7 +38,12 @@ Index User
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->nik }}</td>
-                        <td>{{ $item->type }}</td>
+                        <td>@if ($item->type == "user")
+                            staff tata usaha
+                        @else
+                        {{ $item->type }}
+                        @endif
+                         </td>
                         <td>
                         
                         @if ($item->type=='admin')
