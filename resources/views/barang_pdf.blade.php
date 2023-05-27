@@ -12,7 +12,8 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan Inventaris Barang</h4>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/SMK_Negeri_1_Cimahi.png" alt="foto" width="100px">
+		<h5>Laporan Inventaris Barang</h5>
 		
 	</center>
  
@@ -24,6 +25,7 @@
           <th>Nama Barang</th>
           <th>Stok</th>
           <th>Harga Barang</th>
+          <th>Total Harga Barang</th>
           <th>Lokasi Barang</th>
           <th>Status</th>
 		  <th>Laporan</th>
@@ -37,7 +39,8 @@
 				{{-- <td><img src="{{ $item->foto_barang}}" alt="foto" width="100px"></td> --}}
                         <td>{{ $item->nama_barang }}</td>
                         <td>{{ $item->stok }}</td>
-                        <td>{{ $item->harga_barang }}</td>
+                        <td>@currency($item->harga_barang)</td>
+                        <td>@currency($item->harga_barang * $item->stok)</td>
                         <td>{{ $item->ruangan->nama_ruangan }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->laporan }}</td>
@@ -46,6 +49,15 @@
 			@endforeach
 		</tbody>
 	</table>
- 
+	<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tanda_Tangan_Mick_Schumacher.png" alt="foto" width="100px" style="position: absolute;
+	right: 100px;  
+	width: 200px;
+	height: 120px;
+	">
+	<h5 style="position: absolute;
+	right: 100px;  
+	width: 200px;
+	height: 120px">Kepala Tata Usaha</h5>
+	
 </body>
 </html>

@@ -77,8 +77,8 @@ Index User
                     @endif
                     @endif
                 </form>  </td>
-                {{-- <td>      
-                  <form action="/barang/{{  $item->id }}" method="POST">
+                <td>      
+                  <form action="/keluar/{{  $item->id }}" method="POST">
                     @csrf
                    @method('delete')
                   <div class="dropdown">
@@ -87,17 +87,19 @@ Index User
                     </button>
                    
                     <div class="dropdown-menu">
-                      @if ( auth()->user()->type == 'user') 
+                     {{-- @if ( auth()->user()->type == 'user') 
                       <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
                         ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                      >
-                      <a class="dropdown-item" href="/barang/{{ $item->id }}/show"
+                      > --}}
+                      @if ( auth()->user()->type == 'user') 
+                      <a class="dropdown-item" href="/keluar/{{ $item->id }}/show2"
                         ><i class="bx bx-edit-alt me-2"></i> Detail</a
                       >
-                      <input type="submit" class="btn btn-danger btn-sm" value="delete">
-                      @endif    
+                      @endif  
+                      {{-- <input type="submit" class="btn btn-danger btn-sm" value="delete">
+                      @endif     --}}
                       @if ( auth()->user()->type == 'kepala') 
-                      <a class="dropdown-item" href="/kepala/{{ $item->id }}/show"
+                      <a class="dropdown-item" href="/kepala/{{ $item->id }}/show2"
                         ><i class="bx bx-edit-alt me-2"></i> Detail</a
                       >
                       @endif  
@@ -105,7 +107,7 @@ Index User
                 </div>
               </div>
             </form>  
-              </td> --}}
+              </td>
         </tr>
         @endforeach
         

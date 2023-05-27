@@ -44,6 +44,11 @@ class KeluarController extends Controller
         $data = Barang::findOrfail($id);
         return view('keluar.show', compact('data'));
     }
+    public function show2($id)
+    {
+        $data = Keluar::findOrfail($id);
+        return view('keluar.show2', compact('data'));
+    }
 
     public function store(Barang $id, Request $request)
     {
@@ -54,21 +59,26 @@ class KeluarController extends Controller
         // $transaksi->users_id = Auth::id();
         // dd($keluar);
         // $keluar->save();
-        $masuk =  new Keluar;
-        $masuk->stok_keluar = $request->stok_keluar;
-        $keluar = Keluar::create([
-            'stok' => $request['stok_keluar'],
-            'status' => $request['status'],
-            'barang_id' => $request['barang_id'],
-            'laporan' => $request['laporan'],
 
-        ]);
         $barang = Barang::find($request->barang_id);
         // $test = $masuk->stok = $request['stok_keluar'] - $barang->stok = $request['stok'];
-        $barang->stok = $request['stok'] - $request['stok_keluar'];
-        // dd($barang);
-        $barang->save();
-        return redirect('/keluar/index');
+        if ($request['stok_keluar'] > $request['stok']) {
+            abort(403, 'Unauthorized action.');
+        } else if ($request['stok_keluar'] < $request['stok']) {
+            $masuk =  new Keluar;
+            $masuk->stok_keluar = $request->stok_keluar;
+            $keluar = Keluar::create([
+                'stok' => $request['stok_keluar'],
+                'status' => $request['status'],
+                'barang_id' => $request['barang_id'],
+                'laporan' => $request['laporan'],
+
+            ]);
+            $barang->stok = $request['stok'] - $request['stok_keluar'];
+            // dd($barang);
+            $barang->save();
+            return redirect('/keluar/index');
+        }
     }
     // public function show($id)
     // {
@@ -93,9 +103,9 @@ class KeluarController extends Controller
     }
     public function destroy($id)
     {
-        $data = Barang::find($id);
+        $data = Keluar::find($id);
         $data->delete();
-        return redirect('/barang/index')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/keluar/index')->with('success', 'Data Berhasil Dihapus');
     }
     public function update_laporan(Keluar $id, Request $request)
     {

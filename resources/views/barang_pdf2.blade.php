@@ -12,7 +12,8 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan Inventaris Barang</h4>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/SMK_Negeri_1_Cimahi.png" alt="foto" width="100px">
+		<h5>Laporan Inventaris Barang</h5>
 		
 	</center>
  
@@ -46,6 +47,14 @@
 			@endforeach
 		</tbody>
 	</table>
- 
+	<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tanda_Tangan_Mick_Schumacher.png" alt="foto" width="100px" style="position: absolute;
+	right: 100px;  
+	width: 200px;
+	height: 120px;
+	">
+	<h5 style="position: absolute;
+	right: 100px;  
+	width: 200px;
+	height: 120px">Kepala Tata Usaha</h5>
 </body>
 </html>

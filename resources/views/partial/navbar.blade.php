@@ -47,7 +47,7 @@
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                       @auth
-                      <img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt class="w-px-40 h-auto rounded-circle" />
                       @endauth
                       @guest
                       <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt class="w-px-40 h-auto rounded-circle" />
@@ -61,7 +61,7 @@
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
                               @auth
-                              <img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" alt class="w-px-40 h-auto rounded-circle" />
                               @endauth
                             </div>
                           </div>
