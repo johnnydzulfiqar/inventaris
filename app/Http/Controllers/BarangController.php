@@ -101,6 +101,8 @@ class BarangController extends Controller
                 'harga_barang' => 'required|numeric',
                 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
+                'keterangan' => 'required',
+
             ];
         $this->validate($request, $rules);
         $input = $request->all();
@@ -147,6 +149,7 @@ class BarangController extends Controller
                 'harga_barang' => 'required|numeric',
                 // 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
+                'keterangan' => 'required',
             ];
         $this->validate($request, $rules);
         $input = $request->all();

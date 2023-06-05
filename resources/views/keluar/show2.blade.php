@@ -25,6 +25,7 @@ Index User
       <h5 class="card-title">Status Barang : {{ $data->status }}</h5>
       <h5 class="card-title">Total Harga Barang : @currency($data->barang->stok * $data->barang->harga_barang)</h5>
       <h5 class="card-title">Laporan Barang : {{ $data->barang->laporan }}</h5>
+      <h5 class="card-title">Keterangan Barang : {{ $data->barang->keterangan }}</h5>
       {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
       @if ( auth()->user()->type == 'user')       
       <a href="/barang/index" class="btn btn-primary">DashBoard</a>

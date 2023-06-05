@@ -98,6 +98,14 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
+            @if ( auth()->user()->type == 'guru')
+            <a href="/guru/index" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Barang</div>
+            </a>
+            <a href="/guru/indexkeluar" class="menu-link">
+              <div data-i18n="Basic Inputs">Tabel Barang Keluar</div>
+            </a>
+            @endif
             @if ( auth()->user()->type == 'admin')
             <a href="/admin/index" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel User</div>

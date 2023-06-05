@@ -117,6 +117,16 @@ Index User
                   {{ $message }}
               </div>
           @enderror
+          <div class="form-outline">
+            <label class="form-label" for="keterangan">Keterangan</label>
+            <input class="form-control" id="keterangan" name="keterangan" rows="4" value="{{ old('keterangan', @$barang->keterangan) }}">
+            
+          </div>
+          @error('keterangan')
+          <div class="alert alert-danger">
+              {{ $message }}
+          </div>
+      @enderror
               <label for="type">Status</label>
               <select id="status" name="status" class="form-select">
                 <option value="Masuk">Masuk</option>

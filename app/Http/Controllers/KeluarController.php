@@ -77,7 +77,7 @@ class KeluarController extends Controller
             $barang->stok = $request['stok'] - $request['stok_keluar'];
             // dd($barang);
             $barang->save();
-            return redirect('/keluar/index');
+            return redirect('/guru/index');
         }
     }
     // public function show($id)
@@ -99,7 +99,7 @@ class KeluarController extends Controller
         // $stok->stok = $request->stok;
         // $stok->save();
         dd($keluar);
-        return redirect('/keluar/index');
+        return redirect('/guru/index');
     }
     public function destroy($id)
     {

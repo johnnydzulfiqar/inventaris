@@ -6,8 +6,7 @@ Index User
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
-<div class="card">
-  <h5 class="card-header">Table Basic</h5>
+
   <div>
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
       @if ( auth()->user()->type == 'user')   
@@ -25,46 +24,57 @@ Index User
       @endif
     </div>
   </div>
-  <div class="table-responsive text-nowrap">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>No</th>
-          {{-- <th>Foto</th> --}}
-          <th>Foto Barang</th>
-          <th>Nama Barang</th>
-          <th>Stok</th>
-          {{-- <th>Harga Barang</th> --}}
-          <th>Lokasi Barang</th>
-          <th>Status</th>
-          
-          <th>Request</th>
 
-          <th>Laporan</th>
+<div class="container">
+
+  <div class="col-md-12">
+      <div class="card">
+
+          <div class="card-header">
+              <h4>Data Table Export</h4>
+              <p>Data table with print, pdf, csv</p>
+          </div>
+
+          <div class="card-body">
+
+              <table class="table table-bordered table-hover" id="table_id">
+                  <thead>
                  
-          <th>Action</th>
-          
-
-        </tr>
-      </thead>
-      @foreach ($data as $item)
-      <tbody class="table-border-bottom-0">
-        <tr>
-          @auth
-          @if ($user_id = Auth::user()->id === $item->user_id)  
-          <td>{{ $loop->iteration }}</td>
-                        {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
-                        <td><img src="{{ $item->foto_barang}}" alt="foto" width="100px"></td>
-                        <td>{{ $item->nama_barang }}</td>
-                        <td>{{ $item->stok }}</td>
-                        {{-- <td>{{ $item->harga_barang }}</td> --}}
-                        <td>{{ $item->ruangan->nama_ruangan }}</td>
-                        <td>{{ $item->status }}</td>
+                    <tr>
+                      <th>No</th>
+                      {{-- <th>Foto</th> --}}
+                      <th>Foto Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Stok</th>
+                      {{-- <th>Harga Barang</th> --}}
+                      <th>Lokasi Barang</th>
+                      <th>Status</th>
+                      
+                      <th>Request</th>
+            
+                      <th>Laporan</th>
+                             
+                      <th>Action</th>
+                      
+            
+                    </tr>
+                  </thead>
+               
+                  <tbody>
+                    @foreach ($data as $item)
+                    @auth
+                    @if ($user_id = Auth::user()->id === $item->user_id)  
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
+                      <td><img src="{{ $item->foto_barang}}" alt="foto" width="100px"></td>
+                      <td>{{ $item->nama_barang }}</td>
+                      <td>{{ $item->stok }}</td>
+                      {{-- <td>{{ $item->harga_barang }}</td> --}}
+                      <td>{{ $item->ruangan->nama_ruangan }}</td>
+                      <td>{{ $item->status }}</td>
+                      <td>{{ $item->user->name }}</td>
                         
-                         
-                          
-                  <td>{{ $item->user->name }}</td>
-                        </td>
                       
                         @if($item->laporan === 'Belum Konfirmasi')
                         <td style="color: red">
@@ -103,23 +113,34 @@ Index User
                     <div class="dropdown-menu">
 
                       <a class="dropdown-item" href="/guru/{{ $item->id }}/show"
-                        ><i class="bx bx-edit-alt me-2"></i> Detail</a>                                                       
+                        ><i class="bx bx-edit-alt me-2"></i> Detail</a>   
+                        @if ( $item->status == 'Pending' )
+
+                        @else   
+                        <a class="dropdown-item" href="/keluar/{{ $item->id }}/show"
+                          ><i class="bx bx-edit-alt me-2"></i> Laporan Barang Keluar</a
+                        >                                                    
+                        @endif
+                       
                 </div>
               </div>
-            </form>  
+              </form>  
                 </td>
-        </tr>
-        @endif
-        @endauth 
-        @endforeach
-        
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                  </tr>
+                 
+                @endif
+                @endauth 
+                @endforeach
+                  </tbody>
+               
+              </table>
+
+          </div>
+
+      </div>
   </div>
-</div>
-</div>
+
+
+
+
 @endsection

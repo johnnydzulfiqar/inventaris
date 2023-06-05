@@ -14,6 +14,7 @@ class Keluar extends Model
         'stok',
         'status',
         'laporan',
+        'keterangan',
 
 
 

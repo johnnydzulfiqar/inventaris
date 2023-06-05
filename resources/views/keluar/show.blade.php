@@ -20,6 +20,8 @@ Index User
       <h5 class="card-title">Status Barang : {{ $data->status }}</h5>
       <h5 class="card-title">Total Harga Barang : @currency($data->stok * $data->harga_barang)</h5>
       <h5 class="card-title">Laporan Barang : {{ $data->laporan }}</h5>
+      <h5 class="card-title">Keterangan Barang : {{ $data->keterangan }}</h5>
+
       <form action="/keluar/create" method="post" enctype="multipart/form-data">
         @csrf 
         <input style="display: none;" type="text" hidden name="barang_id" value="{{ $data->id }}" class="form-control">

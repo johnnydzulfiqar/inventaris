@@ -60,11 +60,11 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/barang/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
     Route::post('/barang/{barang}/laporan', [BarangController::class, 'update_laporan']);
     Route::get('/keluar/index', [KeluarController::class, 'index'])->name('keluar.index');
-    Route::get('/keluar/create', [KeluarController::class, 'create'])->name('keluar.create');
-    Route::post('/keluar/create', [KeluarController::class, 'store']);
+    // Route::get('/keluar/create', [KeluarController::class, 'create'])->name('keluar.create');
+    // Route::post('/keluar/create', [KeluarController::class, 'store']);
     Route::get('/keluar/{keluar}/edit', [KeluarController::class, 'edit'])->name(name: 'keluar.edit');
     Route::patch('/keluar/{keluar}', [KeluarController::class, 'update'])->name(name: 'keluar.update');
-    Route::get('/keluar/{keluar}/show', [KeluarController::class, 'show'])->name('keluar.show');
+    // Route::get('/keluar/{keluar}/show', [KeluarController::class, 'show'])->name('keluar.show');
     Route::get('/keluar/{keluar}/show2', [KeluarController::class, 'show2'])->name('keluar.show2');
     Route::post('/keluar/{keluar}/laporan', [KeluarController::class, 'update_laporan']);
     Route::delete('/keluar/{keluar}', [KeluarController::class, 'destroy'])->name(name: 'keluar.delete');
@@ -108,8 +108,13 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
 
 Route::middleware(['auth', 'user-access:guru'])->group(function () {
     Route::get('/guru/index', [GuruController::class, 'index'])->name('guru.index');
+    Route::get('/guru/indexkeluar', [GuruController::class, 'indexkeluar'])->name('guru.indexkeluar');
     Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
     Route::post('/guru/create', [GuruController::class, 'store']);
     Route::get('/guru/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
+    Route::get('/guru/{guru}/show2', [KeluarController::class, 'show2'])->name('keluar.show2');
+    Route::get('/keluar/{keluar}/show', [KeluarController::class, 'show'])->name('keluar.show');
+    Route::get('/keluar/create', [KeluarController::class, 'create'])->name('keluar.create');
+    Route::post('/keluar/create', [KeluarController::class, 'store']);
 });
 Auth::routes();

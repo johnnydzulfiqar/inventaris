@@ -18,6 +18,7 @@ class Barang extends Model
         'foto_barang',
         'status',
         'laporan',
+        'keterangan',
         'ruangan_id',
         'user_id',
 

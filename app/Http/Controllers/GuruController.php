@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Ruangan;
 use App\Models\Barang;
+use App\Models\Keluar;
 use App\Models\Kepala;
 use App\Models\User;
 
@@ -33,6 +34,24 @@ class GuruController extends Controller
         $data = Barang::all();
         return view('guru.index', compact('data'));
     }
+    public function indexkeluar(Request $request)
+    {
+        // $q = $request->get('q');
+
+        // $barang['result'] = Barang::where(function ($query) use ($q) {
+        //     $query->where('kategori_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('nama_produk', 'like', '%' . $q . '%');
+        //     $query->orwhere('stok', 'like', '%' . $q . '%');
+        //     $query->orwhere('harga_produk', 'like', '%' . $q . '%');
+        // })->paginate();
+
+        // $barang['q'] = $q;
+        // return view('barang.index', $barang);
+        // $data = Barang::all()->where('status', '=', 'Masuk'); //buat barang masuk
+        $data = Keluar::where('barang_id->user_id', Auth::id())->first();
+        $data = Keluar::all();
+        return view('guru.indexkeluar', compact('data'));
+    }
     public function create()
     {
         $ruangan = Ruangan::all();
@@ -47,6 +66,8 @@ class GuruController extends Controller
                 'harga_barang' => 'required|numeric',
                 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
+                'keterangan' => 'required',
+
             ];
         $this->validate($request, $rules);
         $input = $request->all();
@@ -55,6 +76,7 @@ class GuruController extends Controller
             $request->foto_barang->storeAs('barang', $fileName);
             $input['foto_barang'] = $fileName;
         }
+        // dd($input);
         // $data =  new Barang;
         // $data->nama_barang = $request->nama_barang;
         // $data->stok = $request->stok;

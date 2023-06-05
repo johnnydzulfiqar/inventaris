@@ -20,7 +20,7 @@ Index User
       <h5 class="card-title">Status Barang : {{ $data->status }}</h5>
       <h5 class="card-title">Total Harga Barang : {{ $data->stok * $data->harga_barang}}</h5>
       <h5 class="card-title">Laporan Barang : {{ $data->laporan }}</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <h5 class="card-title">Keterangan Barang : {{ $data->keterangan }}</h5>
       <a href="/barang/index" class="btn btn-primary">Go somewhere</a>
     </div>
     <div class="card-footer text-muted">
