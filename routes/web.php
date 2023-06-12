@@ -68,6 +68,10 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/keluar/{keluar}/show2', [KeluarController::class, 'show2'])->name('keluar.show2');
     Route::post('/keluar/{keluar}/laporan', [KeluarController::class, 'update_laporan']);
     Route::delete('/keluar/{keluar}', [KeluarController::class, 'destroy'])->name(name: 'keluar.delete');
+    Route::get('/barang/filter', [BarangController::class, 'filter']);
+    Route::get('/barang/filterpending', [BarangController::class, 'filterpending']);
+    Route::get('/barang/filterreject', [BarangController::class, 'filterreject']);
+    Route::get('/keluar/filter', [KeluarController::class, 'filter']);
 });
 
 /*------------------------------------------
@@ -85,6 +89,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name(name: 'admin.delete');
     Route::get('/admin/{admin}/show', [AdminController::class, 'show'])->name('admin.show');
     Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/filter', [AdminController::class, 'filter']);
 });
 
 /*------------------------------------------
@@ -116,5 +121,7 @@ Route::middleware(['auth', 'user-access:guru'])->group(function () {
     Route::get('/keluar/{keluar}/show', [KeluarController::class, 'show'])->name('keluar.show');
     Route::get('/keluar/create', [KeluarController::class, 'create'])->name('keluar.create');
     Route::post('/keluar/create', [KeluarController::class, 'store']);
+    Route::get('/guru/filter', [GuruController::class, 'filter']);
+    Route::get('/guru/filterkeluar', [GuruController::class, 'filterkeluar']);
 });
 Auth::routes();

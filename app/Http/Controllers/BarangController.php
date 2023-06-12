@@ -84,6 +84,48 @@ class BarangController extends Controller
         // $data = Barang::all();
         return view('barang.indexreject', compact('datareject'));
     }
+    public function filter(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $data = Barang::all()->where('status', '=', 'Masuk');
+            return view('barang.index', compact('data'));
+        } else {
+            $data = Barang::whereBetween('created_at', [$start_date, $end_date])
+                ->where('status', '=', 'Masuk')
+                ->get();
+            return view('barang.index', compact('data'));
+        }
+    }
+    public function filterpending(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $datapending = Barang::all()->where('status', '=', 'Pending');
+            return view('barang.indexpending', compact('datapending'));
+        } else {
+            $datapending = Barang::whereBetween('created_at', [$start_date, $end_date])
+                ->where('status', '=', 'Pending')
+                ->get();
+            return view('barang.indexpending', compact('datapending'));
+        }
+    }
+    public function filterreject(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $datareject = Barang::all()->where('status', '=', 'Reject');
+            return view('barang.indexreject', compact('datareject'));
+        } else {
+            $datareject = Barang::whereBetween('created_at', [$start_date, $end_date])
+                ->where('status', '=', 'Reject')
+                ->get();
+            return view('barang.indexreject', compact('datareject'));
+        }
+    }
 
 
 

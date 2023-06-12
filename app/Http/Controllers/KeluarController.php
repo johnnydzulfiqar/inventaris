@@ -34,6 +34,20 @@ class KeluarController extends Controller
         // $data = Barang::all();
         return view('keluar.index', compact('datakeluar'));
     }
+    public function filter(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $datakeluar = Keluar::all();
+            return view('keluar.index', compact('datakeluar'));
+        } else {
+            $datakeluar = Keluar::whereBetween('created_at', [$start_date, $end_date])
+                // ->where('status', '=', 'Masuk')
+                ->get();
+            return view('keluar.index', compact('datakeluar'));
+        }
+    }
     public function create()
     {
         $barang = Barang::all();
@@ -72,6 +86,8 @@ class KeluarController extends Controller
                 'status' => $request['status'],
                 'barang_id' => $request['barang_id'],
                 'laporan' => $request['laporan'],
+                'keterangan_keluar' => $request['keterangan_keluar'],
+
 
             ]);
             $barang->stok = $request['stok'] - $request['stok_keluar'];

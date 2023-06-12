@@ -31,6 +31,13 @@ Index User
             {{ $message }}
         </div>
     @enderror
+    <label for="keterangan_keluar">Keterangan Kerusakan</label>
+    <input style="display" type="text" name="keterangan_keluar" value="" class="form-control">
+        @error('keterangan_keluar')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @enderror
         <input style="display" type="text" hidden name="stok" value="{{ $data->stok }}" class="form-control">
         <input style="display: none;" type="text" hidden name="status" value="Keluar" class="form-control">
         <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('stok');
             $table->string('status', 150);
             $table->string('laporan', 150);
+            $table->string('keterangan_keluar', 150);
+
             $table->timestamps();
         });
     }

@@ -7,21 +7,34 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
     public function index(Request $request)
     {
-        $data['user'] = User::all();
+        $data['data'] = User::all();
         return view('admin.index', $data);
-        // $request->user()->authorizeRoles('admin');
 
-        // $auth_admin_user = Auth::user()->hasRole('admin');
-        // $data = User::all();
-        // $data->except($auth_admin_user);
+        // $start = Carbon::parse($request->start_date);
+        // $end = Carbon::parse($request->end_date);
+        // $data = User::whereDate('date', '<=', $end->format('m-d-y'))
+        //     ->whereDate('date', '>=', $start->format('m-d-y'));
 
-        // return view('admin.index', $data);
+        // return view('admin.index', compact('data'));
+    }
+    public function filter(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $data['data'] = User::all();
+            return view('admin.index', $data);
+        } else {
+            $data = User::whereBetween('created_at', [$start_date, $end_date])
+                ->get();
+            return view('admin.index', compact('data'));
+        }
     }
 
     public function create()

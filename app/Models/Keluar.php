@@ -15,6 +15,7 @@ class Keluar extends Model
         'status',
         'laporan',
         'keterangan',
+        'keterangan_keluar',
 
 
 

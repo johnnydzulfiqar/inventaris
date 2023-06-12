@@ -52,6 +52,38 @@ class GuruController extends Controller
         $data = Keluar::all();
         return view('guru.indexkeluar', compact('data'));
     }
+    public function filter(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $data = Barang::where('user_id', Auth::id())->first();
+            $data = Barang::all();
+            return view('guru.index', compact('data'));
+        } else {
+            $data = Barang::where('user_id', Auth::id())->first();
+            $data = Barang::whereBetween('created_at', [$start_date, $end_date])
+
+                ->get();
+            return view('guru.index', compact('data'));
+        }
+    }
+    public function filterkeluar(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if (empty($start_date && $end_date)) {
+            $data = Keluar::where('barang_id->user_id', Auth::id())->first();
+            $data = Keluar::all();
+            return view('guru.indexkeluar', compact('data'));
+        } else {
+            $data = Keluar::where('barang_id->user_id', Auth::id())->first();
+            $data = Keluar::whereBetween('created_at', [$start_date, $end_date])
+                ->where('status', '=', 'Keluar')
+                ->get();
+            return view('guru.indexkeluar', compact('data'));
+        }
+    }
     public function create()
     {
         $ruangan = Ruangan::all();

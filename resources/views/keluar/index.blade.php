@@ -30,14 +30,27 @@ Index User
           </div>
 
           <div class="card-body">
-
+            <form method="GET" action="/keluar/filter">
+              <div class="row pb-3">
+            <div class="col-md-3">
+              <label>Start date</label>
+              <input type="date" name="start_date" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label>End date</label>
+              <input type="date" name="end_date" class="form-control">
+            </div>
+            <div class="col-md-1 pt-4" style="margin: 5px 0px 0px 0px">
+              <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+          </form>
               <table class="table table-bordered table-hover" id="table_id">
                   <thead>
                  
                     <tr>
                       <th>No</th>
                       {{-- <th>Foto</th> --}}
-                      <th>Foto Barang</th>
+                      {{-- <th>Foto Barang</th> --}}
                       <th>Nama Barang</th>
                       <th>Stok</th>
                       {{-- <th>Harga Barang</th> --}}
@@ -47,6 +60,8 @@ Index User
                       <th>Request</th>
             
                       <th>Laporan</th>
+                      <th>Tanggal</th>
+
                       <th>Action</th>
                       
                       @if ( auth()->user()->type == 'kepala')       
@@ -63,7 +78,7 @@ Index User
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                                     {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
-                                    <td><img src="{{ $item->barang->foto_barang}}" alt="foto" width="100px"></td>
+                                    {{-- <td><img src="{{ $item->barang->foto_barang}}" alt="foto" width="100px"></td> --}}
                                     <td>{{ $item->barang->nama_barang }}</td>
                                     <td>{{ $item->stok }}</td>
                                     {{-- <td>{{ $item->harga_barang }}</td> --}}
@@ -94,6 +109,7 @@ Index User
                                 @endif
                                 @endif
                             </form>  </td>
+                            <td>{{ $item->created_at->format('Y-m-d') }}</td>
                             <td>      
                               <form action="/keluar/{{  $item->id }}" method="POST">
                                 @csrf

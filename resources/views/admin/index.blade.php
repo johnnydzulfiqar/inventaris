@@ -23,9 +23,25 @@ Index User
               <h4>Data Table Export</h4>
               <p>Data table with print, pdf, csv</p>
           </div>
-
+          
           <div class="card-body">
-
+           
+              <form method="GET" action="/admin/filter">
+                <div class="row pb-3">
+              <div class="col-md-3">
+                <label>Start date</label>
+                <input type="date" name="start_date" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <label>End date</label>
+                <input type="date" name="end_date" class="form-control">
+              </div>
+              <div class="col-md-1 pt-4" style="margin: 5px 0px 0px 0px">
+                <button type="submit" class="btn btn-primary">Filter</button>
+              </div>
+            </form>
+            
+        </div>
               <table class="table table-bordered table-hover" id="table_id">
                   <thead>
                       <tr>
@@ -36,6 +52,7 @@ Index User
                         <th>Alamat</th>
                         <th>NIK</th>
                         <th>Jabatan</th>
+                        <th>Tanggal</th>
                         <th>Actions</th>
 
 
@@ -43,7 +60,7 @@ Index User
                   </thead>
                
                   <tbody>
-                    @foreach ($user as $item)
+                    @foreach ($data as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                                     {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
@@ -57,6 +74,7 @@ Index User
                                     {{ $item->type }}
                                     @endif
                                      </td>
+                                     <td>{{ $item->created_at->format('Y-m-d') }}</td>
                                     <td>
                                     
                                     @if ($item->type=='admin')
@@ -109,4 +127,5 @@ Index User
   </div>
 
 </div>
+
 @endsection
