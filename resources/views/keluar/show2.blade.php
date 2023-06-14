@@ -13,9 +13,7 @@ Index User
     <div class="card-body">
       <img class="card-img-top" style="width: 300px" src="{{ $data->barang->foto_barang}}" alt="Card image cap">
       <h5 class="card-title">Nama Barang   : {{ $data->barang->nama_barang }}</h5>
-      <h5 class="card-title">ID Barang   : <?php
-        echo uniqid();
-        ?></h5>
+      <h5 class="card-title">ID Barang   : K{{ $data->id  }}{{ $data->created_at->format('mdY') }}</h5>
       <h5 class="card-title">Stok Barang   : {{ $data->stok }}</h5>
       <h5 class="card-title">Harga Barang  : @currency($data->barang->harga_barang) </h5>
       <h5 class="card-title">Nama Ruangan  : {{ $data->barang->ruangan->nama_ruangan }}</h5>
