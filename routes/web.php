@@ -9,9 +9,8 @@ use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KeluarController;
-
-
-
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +71,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/barang/filterpending', [BarangController::class, 'filterpending']);
     Route::get('/barang/filterreject', [BarangController::class, 'filterreject']);
     Route::get('/keluar/filter', [KeluarController::class, 'filter']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 });
 
 /*------------------------------------------
@@ -109,6 +109,7 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
     Route::get('/kepala/cetak_pdf', [BarangController::class, 'cetak_pdf']);
     Route::get('/kepala/cetak_pdf2', [BarangController::class, 'cetak_pdf2']);
     Route::post('/keluar/{keluar}/laporan', [KeluarController::class, 'update_laporan']);
+    Route::get('/dashboard2', [DashboardController::class, 'index'])->name('dashboard2.index');
 });
 
 Route::middleware(['auth', 'user-access:guru'])->group(function () {

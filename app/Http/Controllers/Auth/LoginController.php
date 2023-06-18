@@ -52,9 +52,9 @@ class LoginController extends Controller
             if (auth()->user()->type == 'admin') {
                 return redirect()->route('admin.index');
             } else if (auth()->user()->type == 'kepala') {
-                return redirect()->route('kepala.index');
+                return redirect()->route('dashboard2.index');
             } else if (auth()->user()->type == 'user') {
-                return redirect()->route('barang.index');
+                return redirect()->route('dashboard.index');
             } else if (auth()->user()->type == 'guru') {
                 return redirect()->route('guru.index');
             } else {

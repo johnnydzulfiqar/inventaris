@@ -71,10 +71,10 @@
       <!-- Dashboard -->
       <li class="menu-item active">
         @if ( auth()->user()->type == 'user') 
-        <a href="/barang/index" class="menu-link">
+        <a href="/dashboard" class="menu-link">
           @endif
           @if ( auth()->user()->type == 'kepala') 
-        <a href="/kepala/index" class="menu-link">
+        <a href="/dashboard2" class="menu-link">
           @endif
           @if ( auth()->user()->type == 'admin') 
         <a href="/admin/index" class="menu-link">
