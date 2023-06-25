@@ -19,6 +19,7 @@ class Barang extends Model
         'status',
         'laporan',
         'keterangan',
+        'kode_ring',
         'ruangan_id',
         'user_id',
 

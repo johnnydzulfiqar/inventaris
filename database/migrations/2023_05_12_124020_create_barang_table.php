@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('status', 150);
             $table->string('laporan', 150);
             $table->string('keterangan', 250);
+            $table->string('kode_ring', 250);
             $table->timestamps();
         });
     }

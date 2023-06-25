@@ -5,28 +5,31 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Login Sebagai  {{ Auth::user()->name }} </h4>
 
-  <div>
+  {{-- <div>
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
       @if ( auth()->user()->type == 'user')   
       <a type="button" class="btn btn-outline-primary" href="{{ url('barang/create') }}">
         <span class="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Tambah Barang
       </a>    
       @endif
+      @if ( auth()->user()->type == 'kepala') 
+      <a href="/kepala/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a>
+      @endif
     </div>
-
-  
+  </div>
+   --}}
 
 <div class="container">
 
   <div class="col-md-12">
       <div class="card">
 
-          <div class="card-header">
-              <h4>Data Table Export</h4>
-              <p>Data table with print, pdf, csv</p>
-          </div>
+        <div class="card-header">
+          <h4>Data Index Barang</h4>
+          {{-- <p>Data table with print, pdf, csv</p> --}}
+      </div>
 
           <div class="card-body">
             <form method="GET" action="/barang/filterpending">

@@ -104,12 +104,15 @@ Route::middleware(['auth', 'user-access:kepala'])->group(function () {
     Route::get('/keluar2/index', [KeluarController::class, 'index'])->name('keluar.index');
     // Route::get('/kepala/indexkeluar', [BarangController::class, 'indexkeluar'])->name('barang.indexkeluar');
     Route::get('/kepala/{barang}/show', [BarangController::class, 'show'])->name('barang.show');
+    Route::get('/kepala/{kepala}/show2', [KeluarController::class, 'show2'])->name('keluar.show2');
     Route::post('/barang/{barang}/laporan', [BarangController::class, 'update_laporan']);
     Route::get('/kepala/{keluar}/show', [KeluarController::class, 'show2'])->name('keluar.show2');
     Route::get('/kepala/cetak_pdf', [BarangController::class, 'cetak_pdf']);
     Route::get('/kepala/cetak_pdf2', [BarangController::class, 'cetak_pdf2']);
     Route::post('/keluar/{keluar}/laporan', [KeluarController::class, 'update_laporan']);
     Route::get('/dashboard2', [DashboardController::class, 'index'])->name('dashboard2.index');
+    Route::get('/kepala/filter', [BarangController::class, 'filter']);
+    Route::get('/kepala/filter2', [KeluarController::class, 'filter']);
 });
 
 Route::middleware(['auth', 'user-access:guru'])->group(function () {

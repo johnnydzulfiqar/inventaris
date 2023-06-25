@@ -5,7 +5,7 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Login Sebagai  {{ Auth::user()->name }} </h4>
 
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
       @if ( auth()->user()->type == 'user')   
@@ -18,9 +18,9 @@ Index User
         <span class="tf-icons bx bx-pie-chart-alt"></span>&nbsp; Request Barang
       </a>    
       @endif --}}
-      @if ( auth()->user()->type == 'kepala') 
+      {{-- @if ( auth()->user()->type == 'kepala') 
       <a href="/kepala/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a>
-      @endif
+      @endif --}}
     </div>
 
 <div class="container">
@@ -29,8 +29,8 @@ Index User
       <div class="card">
 
           <div class="card-header">
-              <h4>Data Table Export</h4>
-              <p>Data table with print, pdf, csv</p>
+              <h4>Data Index Barang</h4>
+              {{-- <p>Data table with print, pdf, csv</p> --}}
           </div>
 
           <div class="card-body">
@@ -52,7 +52,7 @@ Index User
                   <thead>
                  
                     <tr>
-                      <th>No</th>
+                      {{-- <th>No</th> --}}
                       {{-- <th>Foto</th> --}}
                       {{-- <th>Foto Barang</th> --}}
                       <th>Nama Barang</th>
@@ -80,7 +80,7 @@ Index User
                     @auth
                     @if ($user_id = Auth::user()->id === $item->barang->user_id)  
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
+                      {{-- <td>{{ $loop->iteration }}</td> --}}
                       {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                       {{-- <td><img src="{{ $item->barang->foto_barang}}" alt="foto" width="100px"></td> --}}
                       <td>{{ $item->barang->nama_barang }}</td>

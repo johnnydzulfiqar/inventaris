@@ -5,7 +5,7 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Login Sebagai  {{ Auth::user()->name }} </h4>
 
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
       {{-- @if ( auth()->user()->type == 'user')   
@@ -24,13 +24,19 @@ Index User
   <div class="col-md-12">
       <div class="card">
 
-          <div class="card-header">
-              <h4>Data Table Export</h4>
-              <p>Data table with print, pdf, csv</p>
-          </div>
+        <div class="card-header">
+          <h4>Data Index Barang</h4>
+          {{-- <p>Data table with print, pdf, csv</p> --}}
+      </div>
+
 
           <div class="card-body">
+            @if ( auth()->user()->type == 'user')   
             <form method="GET" action="/keluar/filter">
+            @endif
+            @if ( auth()->user()->type == 'kepala')   
+            <form method="GET" action="/kepala/filter2">
+            @endif
               <div class="row pb-3">
             <div class="col-md-3">
               <label>Start date</label>
@@ -55,8 +61,9 @@ Index User
                       <th>Stok</th>
                       {{-- <th>Harga Barang</th> --}}
                       <th>Lokasi Barang</th>
+                      @if ( auth()->user()->type == 'user')   
                       <th>Status</th>
-                     
+                      @endif
                       <th>Request</th>
             
                       <th>Laporan</th>
@@ -83,8 +90,9 @@ Index User
                                     <td>{{ $item->stok }}</td>
                                     {{-- <td>{{ $item->harga_barang }}</td> --}}
                                     <td>{{ $item->barang->ruangan->nama_ruangan }}</td>
+                                    @if ( auth()->user()->type == 'user')   
                                     <td>{{ $item->status }}</td>
-                                    
+                                    @endif
                                      
                                       
                                     <td>{{ $item->barang->user->name }}</td>
@@ -96,19 +104,7 @@ Index User
                                     <td style="color: green">
                                         {{ $item->laporan  }}</td>
                                         @endif
-                                        @if ( auth()->user()->type == 'kepala')
-                                  <td><form action="/keluar/{keluar}/laporan" method="post" enctype="multipart/form-data">
-                                    @csrf 
-                                    <input style="display: none;" type="text" hidden name="id" value="{{ $item->id }}" class="form-control">
-                                    {{-- <input style="display: none;" type="text" hidden name="barang_id" value="{{ $item->admin->id }}" class="form-control">
-                                    <input style="display: none;" type="text" hidden name="stok" value="{{ $item->admin->stok-1 }}" class="form-control"> --}}
-                                    <input style="display: none;" type="text" hidden name="status" value="Sudah Konfirmasi" class="form-control">
-                                @if ($item->laporan == 'Belum Konfirmasi')
-                                <button type="submit" class="btn btn-success">Konfirmasi</button>
-                                @else
-                                @endif
-                                @endif
-                            </form>  </td>
+                                        
                             <td>{{ $item->created_at->format('Y-m-d') }}</td>
                             <td>      
                               <form action="/keluar/{{  $item->id }}" method="POST">
@@ -141,6 +137,19 @@ Index User
                           </div>
                         </form>  
                           </td>
+                          @if ( auth()->user()->type == 'kepala')
+                                  <td><form action="/keluar/{keluar}/laporan" method="post" enctype="multipart/form-data">
+                                    @csrf 
+                                    <input style="display: none;" type="text" hidden name="id" value="{{ $item->id }}" class="form-control">
+                                    {{-- <input style="display: none;" type="text" hidden name="barang_id" value="{{ $item->admin->id }}" class="form-control">
+                                    <input style="display: none;" type="text" hidden name="stok" value="{{ $item->admin->stok-1 }}" class="form-control"> --}}
+                                    <input style="display: none;" type="text" hidden name="status" value="Sudah Konfirmasi" class="form-control">
+                                @if ($item->laporan == 'Belum Konfirmasi')
+                                <button type="submit" class="btn btn-success">Konfirmasi</button>
+                                @else
+                                @endif
+                                @endif
+                            </form>  </td>
                     </tr>
                 @endforeach
                   </tbody>

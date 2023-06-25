@@ -5,7 +5,7 @@ Index Ruangan
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Login Sebagai  {{ Auth::user()->name }} </h4>
 
   <div>
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
@@ -20,10 +20,10 @@ Index Ruangan
   <div class="col-md-12">
       <div class="card">
 
-          <div class="card-header">
-              <h4>Data Table Export</h4>
-              <p>Data table with print, pdf, csv</p>
-          </div>
+        <div class="card-header">
+          <h4>Data Index Barang</h4>
+          {{-- <p>Data table with print, pdf, csv</p> --}}
+      </div>
 
           <div class="card-body">
 

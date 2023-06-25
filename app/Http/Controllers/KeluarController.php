@@ -73,10 +73,16 @@ class KeluarController extends Controller
         // $transaksi->users_id = Auth::id();
         // dd($keluar);
         // $keluar->save();
+        $rules =
+            [
+                'stok_keluar' => 'required|numeric',
+                'keterangan_keluar' => 'required',
 
+            ];
+        $this->validate($request, $rules);
         $barang = Barang::find($request->barang_id);
         // $test = $masuk->stok = $request['stok_keluar'] - $barang->stok = $request['stok'];
-        if ($request['stok_keluar'] > $request['stok']) {
+        if ($request['stok_keluar'] >= $request['stok']) {
             abort(403, 'Unauthorized action.');
         } else if ($request['stok_keluar'] < $request['stok']) {
             $masuk =  new Keluar;
@@ -87,8 +93,6 @@ class KeluarController extends Controller
                 'barang_id' => $request['barang_id'],
                 'laporan' => $request['laporan'],
                 'keterangan_keluar' => $request['keterangan_keluar'],
-
-
             ]);
             $barang->stok = $request['stok'] - $request['stok_keluar'];
             // dd($barang);

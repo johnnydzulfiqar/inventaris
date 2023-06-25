@@ -26,16 +26,16 @@ Index User
         @csrf 
         <input style="display: none;" type="text" hidden name="barang_id" value="{{ $data->id }}" class="form-control">
         <input style="display" type="text" name="stok_keluar" value="{{ $data->stok }}" class="form-control">
-        @error('stok')
+        @error('stok_keluar')
         <div class="alert alert-danger">
-            {{ $message }}
+            <p>Format Salah</p>
         </div>
     @enderror
     <label for="keterangan_keluar">Keterangan Kerusakan</label>
     <input style="display" type="text" name="keterangan_keluar" value="" class="form-control">
         @error('keterangan_keluar')
         <div class="alert alert-danger">
-            {{ $message }}
+          <p>Tolong Isi</p>
         </div>
     @enderror
         <input style="display" type="text" hidden name="stok" value="{{ $data->stok }}" class="form-control">

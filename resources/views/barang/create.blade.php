@@ -5,7 +5,7 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms Pengisian Barang</h4>
 
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
@@ -17,9 +17,9 @@ Index User
             @csrf
             <div class="col-xxl">
         <div class="card mb-4">
-          <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Basic with Icons</h5>
-            <small class="text-muted float-end">Merged input group</small>
+          <div class="card-header d-flex align-items-center justify-content-between mb-3">
+            <h5 class="mb-0">Pengisian Barang</h5>
+
           </div>
           <div class="card-body">
             <form>
@@ -28,7 +28,7 @@ Index User
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"
-                      ><i class="bx bx-user"></i
+                      ><i class="bx"></i
                     ></span>
                     <input
                       type="text"
@@ -51,7 +51,7 @@ Index User
                 <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Stok</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                    <span class="input-group-text"><i class="bx "></i></span>
                     <input
                       type="text"
                       id="stok"
@@ -71,11 +71,34 @@ Index User
                 </div>
               </div>
               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Kode Ring</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span class="input-group-text"><i class="bx"></i></span>
+                    <input
+                      type="text"
+                      id="kode_ring"
+                      name="kode_ring"
+                      value="{{ old('kode_ring', @$barang->kode_ring) }}"
+                      class="form-control"
+                     
+                      aria-describedby="basic-icon-default"
+                    />
+                    @error('stok')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="row mb-3">
                 <label class="col-sm-2 form-label" for="basic-icon-default-phone">Harga Barang</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span id="basic-icon-default-fullname2" class="input-group-text"
-                      ><i class="bx bx-user"></i
+                      ><i class="bx "></i
                     ></span>
                     <input
                       type="text"
