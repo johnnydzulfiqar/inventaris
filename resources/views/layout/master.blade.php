@@ -153,7 +153,12 @@
                 // lengthMenu: [0, 5, 10, 20, 50, 100, 200, 500],
 
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    'copy', 'csv', 'excel', {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                }
+            },, 'print'
                 ]
 
             });
