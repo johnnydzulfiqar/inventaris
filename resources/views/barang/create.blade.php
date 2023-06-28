@@ -162,7 +162,7 @@ Index User
           <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">
               <div class="row justify-content-end">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Send</button>
+                  <button type="submit" class="btn btn-primary mt-3 mb-3">Send</button>
                 </div>
               </div>
             </form>

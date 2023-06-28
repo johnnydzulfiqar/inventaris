@@ -48,11 +48,11 @@ Index User
                         <th>No</th>
                         {{-- <th>Foto</th> --}}
                         <th>Nama</th>
-                        <th>Email</th>
+                        {{-- <th>Email</th> --}}
                         <th>Alamat</th>
                         <th>NIK</th>
                         <th>Jabatan</th>
-                        <th>Tanggal</th>
+                        {{-- <th>Tanggal</th> --}}
                         <th>Actions</th>
 
 
@@ -65,7 +65,7 @@ Index User
                       <td>{{ $loop->iteration }}</td>
                                     {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
+                                    {{-- <td>{{ $item->email }}</td> --}}
                                     <td>{{ $item->alamat }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>@if ($item->type == "user")
@@ -74,7 +74,7 @@ Index User
                                     {{ $item->type }}
                                     @endif
                                      </td>
-                                     <td>{{ $item->created_at->format('Y-m-d') }}</td>
+                                     {{-- <td>{{ $item->created_at->format('Y-m-d') }}</td> --}}
                                     <td>
                                     
                                     @if ($item->type=='admin')

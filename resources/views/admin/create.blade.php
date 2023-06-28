@@ -5,7 +5,7 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>
+    {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4> --}}
 
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
@@ -18,8 +18,8 @@ Index User
             <div class="col-xxl">
         <div class="card mb-4">
           <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Basic with Icons</h5>
-            <small class="text-muted float-end">Merged input group</small>
+            <h5 class="mb-0">Form add user</h5>
+            {{-- <small class="text-muted float-end">Merged input group</small> --}}
           </div>
           <div class="card-body">
             <form>
@@ -135,7 +135,7 @@ Index User
             </div> --}}
               <div class="row justify-content-end">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Send</button>
+                  <button type="submit" class="btn btn-primary mt-3">Send</button>
                 </div>
               </div>
             </form>
