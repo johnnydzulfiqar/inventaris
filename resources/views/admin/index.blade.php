@@ -5,7 +5,7 @@ Index User
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }} /</span> Basic Tables</h4>
+  {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Welcome  {{ Auth::user()->name }}</h4> --}}
   <div>
     <div class="demo-inline-spacing " style="margin:-25px 0px 10px 20px;">
       <a type="button" class="btn btn-outline-primary" href="{{ url('admin/create') }}">
@@ -20,8 +20,8 @@ Index User
       <div class="card">
 
           <div class="card-header">
-              <h4>Data Table Export</h4>
-              <p>Data table with print, pdf, csv</p>
+              <h4>Tabel User</h4>
+              {{-- <p>Data table with print, pdf, csv</p> --}}
           </div>
           
           <div class="card-body">
