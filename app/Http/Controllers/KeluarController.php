@@ -13,7 +13,7 @@ use PDF;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\ValidationException;
 
 class KeluarController extends Controller
 {
@@ -83,7 +83,9 @@ class KeluarController extends Controller
         $barang = Barang::find($request->barang_id);
         // $test = $masuk->stok = $request['stok_keluar'] - $barang->stok = $request['stok'];
         if ($request['stok_keluar'] >= $request['stok']) {
-            abort(403, 'Unauthorized action.');
+            throw ValidationException::withMessages([
+                'stok_keluar' => 'Melebihi Stok',
+            ]);
         } else if ($request['stok_keluar'] < $request['stok']) {
             $masuk =  new Keluar;
             $masuk->stok_keluar = $request->stok_keluar;

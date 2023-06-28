@@ -146,7 +146,7 @@ background-color:#eee;
                       <input style="display" type="text" name="stok_keluar" value="" class="form-control">
                       @error('stok_keluar')
                       <div class="alert alert-danger">
-                          <p>Format Salah</p>
+                          {{ $message }}
                       </div>
                   @enderror
                   <label for="keterangan_keluar">Keterangan Kerusakan</label>
