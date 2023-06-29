@@ -39,6 +39,11 @@ Index User
                       aria-describedby="basic-icon-default-fullname2"
                     />
                   </div>
+                  @error('name')
+                    <div class="alert alert-danger">
+                    {{ $message }}
+                    </div>
+                  @enderror
                 </div>
               </div>
               
@@ -56,6 +61,11 @@ Index User
                      
                       aria-describedby="basic-icon-default-email2"
                     />
+                    @error('email')
+                      <div class="alert alert-danger">
+                      {{ $message }}
+                      </div>
+                    @enderror
                     <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
                   </div>
                   <div class="form-text">You can use letters, numbers & periods</div>
@@ -77,6 +87,11 @@ Index User
                       aria-describedby="basic-icon-default-fullname2"
                     />
                   </div>
+                  @error('nik')
+                  <div class="alert alert-danger">
+                  {{ $message }}
+                  </div>
+                @enderror
                 </div>
               </div>
               <div class="row mb-3">
@@ -94,6 +109,11 @@ Index User
                       value="{{ old('alamat', @$admin->alamat) }}"
                       aria-describedby="basic-icon-default-fullname2"
                     />
+                    @error('alamat')
+                  <div class="alert alert-danger">
+                  {{ $message }}
+                  </div>
+                @enderror
                   </div>
                 </div>
               </div>
@@ -113,6 +133,11 @@ Index User
                      
                       aria-describedby="basic-icon-default-fullname2"
                     />
+                    @error('password')
+                    <div class="alert alert-danger">
+                    {{ $message }}
+                    </div>
+                  @enderror
                   </div>
                 </div>
               </div>

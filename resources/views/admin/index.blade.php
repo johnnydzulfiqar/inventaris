@@ -26,7 +26,7 @@ Index User
           
           <div class="card-body">
            
-              <form method="GET" action="/admin/filter">
+              {{-- <form method="GET" action="/admin/filter">
                 <div class="row pb-3">
               <div class="col-md-3">
                 <label>Start date</label>
@@ -40,7 +40,7 @@ Index User
                 <button type="submit" class="btn btn-primary">Filter</button>
               </div>
             </form>
-            
+             --}}
         </div>
               <table class="table table-bordered table-hover" id="table_id">
                   <thead>
@@ -127,5 +127,46 @@ Index User
   </div>
 
 </div>
+<script>
+  $(document).ready(function() {
+            $('#table_id').DataTable({
 
+                dom: 'Bfrtip',
+                responsive: true,
+                pageLength: 25,
+                // lengthMenu: [0, 5, 10, 20, 50, 100, 200, 500],
+
+                buttons: [
+                    {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4 ]
+                }
+            }, {
+                extend: 'csvHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4 ]
+                }
+            },  {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4 ]
+                }
+            }, {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4 ]
+                }
+            }, {
+                extend: 'print',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4 ]
+                }
+            },
+                ]
+
+            });
+            
+        });
+</script>
 @endsection

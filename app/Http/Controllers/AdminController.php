@@ -47,7 +47,7 @@ class AdminController extends Controller
         $rules =
             [
                 'name' => 'required',
-                'email' => 'required',
+                'email' => 'required | email',
                 'password' => 'required',
                 'alamat' => 'required',
                 'nik' => 'required|numeric',
