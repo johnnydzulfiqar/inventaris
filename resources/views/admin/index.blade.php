@@ -78,7 +78,7 @@ Index User
                                     <td>
                                     
                                     @if ($item->type=='admin')
-                                    <form action="/admin/{{  $item->id }}" method="POST">
+                                    <form action="{{ url("/admin/$item->id")  }}" method="POST">
                                       @csrf
                                      @method('delete')
                                     <div class="dropdown">
@@ -86,7 +86,7 @@ Index User
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                       </button>
                                       <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/admin/{{ $item->id }}/edit"
+                                        <a class="dropdown-item" href="{{ url("/admin/$item->id/edit")  }}"
                                           ><i class="bx bx-edit-alt me-2"></i> Edit</a
                                         >
                                         
@@ -95,7 +95,7 @@ Index User
                                 </div>
                               </form>
                                     @else
-                                    <form action="/admin/{{  $item->id }}" method="POST">
+                                    <form action="{{ url("/admin/$item->id")  }}" method="POST">
                                       @csrf
                                      @method('delete')
                                     <div class="dropdown">
@@ -103,7 +103,7 @@ Index User
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                       </button>
                                       <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/admin/{{ $item->id }}/edit"
+                                        <a class="dropdown-item" href="{{ url("/admin/$item->id/edit")  }}"
                                           ><i class="bx bx-edit-alt me-2"></i> Edit</a
                                         >
                                         <input type="submit" class="btn btn-danger btn-sm" value="delete">
