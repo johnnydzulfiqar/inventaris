@@ -106,7 +106,7 @@ Index User
                     <td>
                      
 
-                      <form action="/barang/{barang}/laporan" method="post" enctype="multipart/form-data">
+                      <form action="{{ url("/barang/{barang}/laporan")  }}" method="post" enctype="multipart/form-data">
                       @csrf 
                       <input style="display: none;" type="text" hidden name="id" value="{{ $item->id }}" class="form-control">
                       {{-- <input style="display: none;" type="text" hidden name="barang_id" value="{{ $item->admin->id }}" class="form-control">
@@ -122,7 +122,7 @@ Index User
               <td>{{ $item->created_at->format('Y-m-d') }}</td>
 
               <td>      
-                <form action="/barang/{{  $item->id }}" method="POST">
+                <form action="{{ url("/barang/$item->id")  }}" method="POST">
                   @csrf
                  @method('delete')
                 <div class="dropdown">
@@ -132,7 +132,7 @@ Index User
                  
                   <div class="dropdown-menu">
 
-                    <a class="dropdown-item" href="/guru/{{ $item->id }}/show2"
+                    <a class="dropdown-item" href="{{ url("/guru/$item->id/show2")  }}"
                       ><i class="bx bx-edit-alt me-2"></i> Detail</a>   
                                                                      
               </div>

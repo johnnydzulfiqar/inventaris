@@ -51,7 +51,7 @@ Index User
                         
                           @if ( auth()->user()->type == 'user')   
                           <td>      
-                        <form action="/barang/{{  $item->id }}" method="POST">
+                        <form action="{{ url("/barang/$item->id")}}" method="POST">
                           @csrf
                          @method('delete')
                         <div class="dropdown">
@@ -59,8 +59,8 @@ Index User
                             <i class="bx bx-dots-vertical-rounded"></i>
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/barang/{{ $item->id }}/edit"
-                              ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                            <a class="dropdown-item" href="{{ url("/barang/$item->id/edit")}}"
+                              ><i class="bx bx-edit-alt me-2"></i> Edit</a>
                             >
                             <input type="submit" class="btn btn-danger btn-sm" value="delete">
                                                 
@@ -78,7 +78,7 @@ Index User
                             {{ $item->laporan  }}</td>
                             @endif
                             @if ( auth()->user()->type == 'kepala')
-                      <td><form action="/barang/{barang}/laporan" method="post" enctype="multipart/form-data">
+                      <td><form action="{{ url("/barang/{barang}/laporan")}}" method="post" enctype="multipart/form-data">
                         @csrf 
                         <input style="display: none;" type="text" hidden name="id" value="{{ $item->id }}" class="form-control">
                         {{-- <input style="display: none;" type="text" hidden name="barang_id" value="{{ $item->admin->id }}" class="form-control">
