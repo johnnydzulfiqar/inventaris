@@ -71,16 +71,16 @@
       <!-- Dashboard -->
       <li class="menu-item active">
         @if ( auth()->user()->type == 'user') 
-        <a href="/dashboard" class="menu-link">
+        <a href="{{ url('/dashboard') }}" class="menu-link">
           @endif
           @if ( auth()->user()->type == 'kepala') 
-        <a href="/dashboard2" class="menu-link">
+        <a href="{{ url('/dashboard2') }}" class="menu-link">
           @endif
           @if ( auth()->user()->type == 'admin') 
-        <a href="/admin/index" class="menu-link">
+        <a href="{{ url('/admin/index') }}" class="menu-link">
           @endif
           @if ( auth()->user()->type == 'guru') 
-        <a href="/guru/index" class="menu-link">
+        <a href="{{ url('/guru/index') }}" class="menu-link">
           @endif
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
@@ -99,49 +99,49 @@
         <ul class="menu-sub">
           <li class="menu-item">
             @if ( auth()->user()->type == 'guru')
-            <a href="/guru/index" class="menu-link">
+            <a href="{{ url('/guru/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang</div>
             </a>
-            <a href="/guru/indexkeluar" class="menu-link">
+            <a href="{{ url('/guru/indexkeluar') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Keluar</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'admin')
-            <a href="/admin/index" class="menu-link">
+            <a href="{{ url('/admin/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel User</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'user')
-            <a href="/barang/index" class="menu-link">
+            <a href="{{ url('/barang/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Masuk</div>
             </a>
-            <a href="/keluar/index" class="menu-link">
+            <a href="{{ url('/keluar/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Keluar</div>
             </a>
-            <a href="/barang/indexpending" class="menu-link">
+            <a href="{{ url('/barang/indexpending') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Pending</div>
             </a>
-            <a href="/barang/indexreject" class="menu-link">
+            <a href="{{ url('/barang/indexreject') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Barang Reject</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'kepala')
-            <a href="/kepala/index" class="menu-link">
+            <a href="{{ url('/kepala/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Masuk</div>
             </a>
-            <a href="/keluar2/index" class="menu-link">
+            <a href="{{ url('/keluar2/index') }}" class="menu-link">
               <div data-i18n="Basic Inputs">Tabel Konfirmasi Barang Keluar</div>
             </a>
             @endif
           </li>
           <li class="menu-item">
             @if ( auth()->user()->type == 'admin')
-            <a href="/admin/create" class="menu-link">
+            <a href="{{ url('/admin/create') }}" class="menu-link">
               <div data-i18n="Input groups">Input User</div>
             </a>
             @endif
             @if ( auth()->user()->type == 'user')
-            <a href="/barang/create" class="menu-link">
+            <a href="{{ url('/barang/create') }}" class="menu-link">
               <div data-i18n="Input groups">Input Barang</div>
             </a>
             @endif
@@ -156,12 +156,12 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="/ruangan/index/" class="menu-link">
+            <a href="{{ url('/ruangan/index/') }}" class="menu-link">
               <div data-i18n="Vertical Form">Index Ruangan</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="/ruangan/create/" class="menu-link">
+            <a href="{{ url('/ruangan/create/') }}" class="menu-link">
               <div data-i18n="Horizontal Form">Input Ruangan</div>
             </a>
           </li>
