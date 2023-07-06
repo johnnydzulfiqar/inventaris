@@ -34,7 +34,7 @@ Index User
           </div>
 
           <div class="card-body">
-            <form method="GET" action="/guru/filterkeluar">
+            <form method="GET" action="{{ url('/guru/filterkeluar') }}">
               <div class="row pb-3">
             <div class="col-md-3">
               <label>Start date</label>

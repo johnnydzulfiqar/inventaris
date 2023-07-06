@@ -33,7 +33,7 @@ Index User
 
 
           <div class="card-body">
-            <form method="GET" action="/barang/filterreject">
+            <form method="GET" action="{{ url('/barang/filterreject') }}">
               <div class="row pb-3">
             <div class="col-md-3">
               <label>Start date</label>

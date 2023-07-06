@@ -50,7 +50,7 @@ background-color:#eee;
                         <div class="col-sm-6">
                             <div class="text-muted">
                                 <h5 class="font-size-16 mb-3">Nama Barang   : {{ $data->nama_barang }}</h5>
-                                <img class="card-img-top" style="width: 300px" src="{{ $data->foto_barang }}" alt="Card image cap">
+                                <img class="card-img-top" style="width: 300px" src="{{ url('/'.$data->foto_barang) }}" alt="Card image cap">
                                 {{-- <h5 class="font-size-15 mb-2">Preston Miller</h5>
                                 <p class="mb-1">4068 Post Avenue Newfolden, MN 56738</p>
                                 <p class="mb-1">PrestonMiller@armyspy.com</p>

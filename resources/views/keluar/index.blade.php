@@ -32,10 +32,10 @@ Index User
 
           <div class="card-body">
             @if ( auth()->user()->type == 'user')   
-            <form method="GET" action="/keluar/filter">
+            <form method="GET" action="{{ url('/keluar/filter') }}">
             @endif
             @if ( auth()->user()->type == 'kepala')   
-            <form method="GET" action="/kepala/filter2">
+            <form method="GET" action="{{ url('/kepala/filter2') }}">
             @endif
               <div class="row pb-3">
             <div class="col-md-3">
