@@ -54,7 +54,7 @@ Index Ruangan
                                     
                                     <td>                  
                                      
-                                      <form action="/ruangan/{{  $item->id }}" method="POST">
+                                      <form action="{{ url("/ruangan/$item->id") }}" method="POST">
                                         @csrf
                                        @method('delete')
                                       <div class="dropdown">
@@ -62,7 +62,7 @@ Index Ruangan
                                           <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                          <a class="dropdown-item" href="/ruangan/{{ $item->id }}/edit"
+                                          <a class="dropdown-item" href="{{ url("/ruangan/$item->id/edit") }}"
                                             ><i class="bx bx-edit-alt me-2"></i> Edit</a
                                           >
                                           <input type="submit" class="btn btn-danger btn-sm" value="delete">
