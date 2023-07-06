@@ -139,7 +139,7 @@ background-color:#eee;
                             </div>
                         </div>
                     </div>
-                    <form action="/keluar/create" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/keluar/create') }}" method="post" enctype="multipart/form-data">
                       @csrf 
                       <input style="display: none;" type="text" hidden name="barang_id" value="{{ $data->id }}" class="form-control">
                       <label for="stok_keluar">Stok Barang Rusak</label>
