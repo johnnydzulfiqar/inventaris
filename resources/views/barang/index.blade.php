@@ -15,7 +15,7 @@ Index User
       </a>    
       @endif
       @if ( auth()->user()->type == 'kepala') 
-      <a href="/kepala/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a>
+      <a href="{{ url('/kepala/cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a>
       @endif
     </div>
   </div>
