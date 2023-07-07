@@ -113,9 +113,10 @@ background-color:#eee;
                                         </td>
                                         <td>{{ $data->status }}</td>
 
-                                        <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
+                                      
                                         <td>{{ $data->laporan }}</td>
                                         <td>{{ $data->keterangan }}</td>
+                                        <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
 
                                         
                                     </tr>
