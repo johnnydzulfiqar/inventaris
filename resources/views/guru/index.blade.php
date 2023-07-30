@@ -114,6 +114,7 @@ Index User
                     @if ($item->laporan == 'Belum Konfirmasi')
                     <button type="submit" class="btn btn-success">Konfirmasi</button>
                     @else
+                    -
                     @endif
                     @endif
                     
