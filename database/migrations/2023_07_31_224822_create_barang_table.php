@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('ruangan_id')->references('id')->on('ruangan')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->unsignedBigInteger('kepala_id');
-            // $table->foreign('kepala_id')->references('id')->on('kepala')->onDelete('cascade');
+            $table->unsignedBigInteger('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');
             $table->string('nama_barang', 150);
             $table->integer('stok');
             $table->integer('harga_barang');
@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('status', 150);
             $table->string('laporan', 150);
             $table->string('keterangan', 250);
-            $table->string('kode_ring', 250);
             $table->timestamps();
         });
     }

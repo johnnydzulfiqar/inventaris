@@ -19,9 +19,10 @@ class Barang extends Model
         'status',
         'laporan',
         'keterangan',
-        'kode_ring',
         'ruangan_id',
         'user_id',
+        'kategori_id',
+
 
     ];
     public function getFotoBarangAttribute()
@@ -37,6 +38,10 @@ class Barang extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'kategori_id');
     }
     // public function kepala()
     // {

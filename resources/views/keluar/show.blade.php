@@ -70,7 +70,7 @@ background-color:#eee;
                                 </div>
                                 <div class="mt-4">
                                     <h5 class="font-size-15 mb-1">Kode Ring :</h5>
-                                    <p>{{ $data->kode_ring }}</p>
+                                    <p>{{ $data->kategori->kode_ring }}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,17 +86,17 @@ background-color:#eee;
                                 <thead>
                                     <tr>
                                         {{-- <th style="width: 70px;">No.</th> --}}
-                                        <th>Stok Barang Keluar</th>
+                                        <th>Stok Barang</th>
                                         <th>Harga</th>
                                         <th>Ruangan</th>
                                         <th>Status</th>
                                         <th>Laporan</th>
                                         <th>Keterangan</th>
-                                        <th>Keterangan Rusak</th>
+
+                                        <th>Total</th>
+                                        <th>ID</th>
 
 
-
-                                        <th class="text-end" style="width: 120px;">Total</th>
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -116,12 +116,12 @@ background-color:#eee;
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->laporan }}</td>
                                         <td>{{ $data->keterangan }}</td>
-
-                                        <td>{{ $data->keterangan_keluar }}</td>
-
+                                        <td>@currency($data->stok * $data->harga_barang)</td>
+                                        <td> @for ($i = 1; $i < $data->stok; $i++)
+                                            <p>{{ $data->kategori->nama_kategori }}{{ $data->created_at->format('H') }}{{ $i }}</p>
+                                            @endfor
+                                        </td>
                                         
-                                        
-                                        <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
                                         
                                     </tr>
                                     

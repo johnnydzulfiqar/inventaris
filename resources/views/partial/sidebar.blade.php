@@ -167,6 +167,24 @@
           </li>
         </ul>
       </li>
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <div data-i18n="Form Layouts">Tabel Kategori</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ url('/kategori/index/') }}" class="menu-link">
+              <div data-i18n="Vertical Form">Index Kategori</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="{{ url('/kategori/create/') }}" class="menu-link">
+              <div data-i18n="Horizontal Form">Input Kategori</div>
+            </a>
+          </li>
+        </ul>
+      </li>
       @endif
       <!-- Tables -->
       {{-- <li class="menu-item">

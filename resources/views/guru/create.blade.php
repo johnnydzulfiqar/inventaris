@@ -69,29 +69,7 @@ Index User
                   
                 </div>
               </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Kode Ring</label>
-                <div class="col-sm-10">
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx"></i></span>
-                    <input
-                      type="text"
-                      id="kode_ring"
-                      name="kode_ring"
-                      value="{{ old('kode_ring', @$barang->kode_ring) }}"
-                      class="form-control"
-                     
-                      aria-describedby="basic-icon-default"
-                    />
-                    @error('stok')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-                    </div>
-                @enderror
-                  </div>
-                  
-                </div>
-              </div>
+              
               <div class="row mb-3">
                 <label class="col-sm-2 form-label" for="basic-icon-default-email">Harga Barang</label>
                 <div class="col-sm-10">
@@ -125,6 +103,15 @@ Index User
                     {{-- <option @selected(old('id', @$item->id) == @$item->id) value="{{ @$item->id }}">{{ $item->nama_ruangan }}</option> --}}
                 @endforeach
             </select>
+            <label for="type">Kategori</label>
+            <select name="kategori_id" id="kategori_id" class="form-control">
+              {{-- <option value="">Pilih Ruangan</option> --}}
+              @foreach ($kategori as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                  {{-- <option @selected(old('nama_ruangan', @$item->nama_ruangan) == '' ) value="">- Pilih Lantai -</option> --}}
+                  {{-- <option @selected(old('id', @$item->id) == @$item->id) value="{{ @$item->id }}">{{ $item->nama_ruangan }}</option> --}}
+              @endforeach
+          </select>
               <div class="mb-3 row mt-3">
                 <label for="foto_barang" class="col-sm-2 col-form-label">Foto</label>
                 <div class="col-sm-5">

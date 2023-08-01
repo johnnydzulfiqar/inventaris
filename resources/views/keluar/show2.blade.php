@@ -70,7 +70,7 @@ background-color:#eee;
                                 </div>
                                 <div class="mt-4">
                                     <h5 class="font-size-15 mb-1">Kode Ring :</h5>
-                                    <p>{{ $data->kode_ring }}</p>
+                                    <p>{{ $data->barang->kategori->kode_ring }}</p>
                                 </div>
                             </div>
                         </div>

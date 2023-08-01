@@ -25,12 +25,17 @@ class CreateRuanganSeeder extends Seeder
             [
                 'nama_ruangan' => 'R02',
                 'lantai' => 'Lantai 2',
-                'kategori' => 'Ruangan Kelas',
+                'kategori' => 'Ruangan Lab',
             ],
             [
                 'nama_ruangan' => 'R03',
                 'lantai' => 'Lantai 3',
-                'kategori' => 'Ruangan Kelas',
+                'kategori' => 'Ruangan Aula',
+            ],
+            [
+                'nama_ruangan' => 'R04',
+                'lantai' => 'Lantai 4',
+                'kategori' => 'Ruangan Serba Guna',
             ],
         ];
 

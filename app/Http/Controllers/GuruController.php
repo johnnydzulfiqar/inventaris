@@ -9,6 +9,8 @@ use App\Models\Barang;
 use App\Models\Keluar;
 use App\Models\Kepala;
 use App\Models\User;
+use App\Models\Kategori;
+
 
 use PDF;
 use Illuminate\Support\Facades\File;
@@ -87,7 +89,8 @@ class GuruController extends Controller
     public function create()
     {
         $ruangan = Ruangan::all();
-        return view('guru.create', compact('ruangan'));
+        $kategori = Kategori::all();
+        return view('guru.create', compact('ruangan', 'kategori'));
     }
     public function store(Request $request)
     {

@@ -7,6 +7,8 @@ use App\Models\Barang;
 use App\Models\Kepala;
 use App\Models\User;
 use App\Models\Keluar;
+use App\Models\Kategori;
+
 
 
 use PDF;
@@ -132,7 +134,9 @@ class BarangController extends Controller
     public function create()
     {
         $ruangan = Ruangan::all();
-        return view('barang.create', compact('ruangan'));
+        $kategori = Kategori::all();
+
+        return view('barang.create', compact('ruangan', 'kategori'));
     }
     public function store(Request $request)
     {
@@ -144,7 +148,6 @@ class BarangController extends Controller
                 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
                 'keterangan' => 'required',
-                'kode_ring' => 'required',
 
 
             ];
@@ -182,7 +185,9 @@ class BarangController extends Controller
     public function edit(Barang $barang)
     {
         $ruangan = Ruangan::all();
-        return view('barang.create', compact('barang', 'ruangan'));
+        $kategori = Kategori::all();
+
+        return view('barang.create', compact('barang', 'ruangan', 'kategori'));
     }
     public function update(Barang $barang, Request $request)
     {
@@ -194,7 +199,6 @@ class BarangController extends Controller
                 // 'foto_barang' => 'required|mimes:jpg,png|max:1024',
                 'status' => 'required',
                 'keterangan' => 'required',
-                'kode_ring' => 'required',
 
             ];
         $this->validate($request, $rules);

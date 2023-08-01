@@ -10,6 +10,7 @@ use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KeluarController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -72,6 +73,13 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/barang/filterreject', [BarangController::class, 'filterreject']);
     Route::get('/keluar/filter', [KeluarController::class, 'filter']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/kategori/index', [KategoriController::class, 'index'])->name('index');
+    Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategori/create', [KategoriController::class, 'store']);
+    Route::get('/kategori/{kategori}/edit', [KategoriController::class, 'edit'])->name(name: 'kategori.edit');
+    Route::patch('/kategori/{kategori}', [KategoriController::class, 'update'])->name(name: 'kategori.update');
+    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name(name: 'kategori.delete');
+    Route::get('/kategori/{kategori}/show', [KategoriController::class, 'show'])->name('kategori.show');
 });
 
 /*------------------------------------------

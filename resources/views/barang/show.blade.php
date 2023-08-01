@@ -50,6 +50,8 @@ background-color:#eee;
                         <div class="col-sm-6">
                             <div class="text-muted">
                                 <h5 class="font-size-16 mb-3">Nama Barang   : {{ $data->nama_barang }}</h5>
+                                <h5 class="font-size-16 mb-3">Kategori Barang   : {{ $data->kategori->nama_kategori }}</h5>
+                               
                                 <img class="card-img-top" style="width: 300px" src="{{ url("$data->foto_barang") }}" alt="Card image cap">
                                 {{-- <h5 class="font-size-15 mb-2">Preston Miller</h5>
                                 <p class="mb-1">4068 Post Avenue Newfolden, MN 56738</p>
@@ -70,7 +72,7 @@ background-color:#eee;
                                 </div>
                                 <div class="mt-4">
                                     <h5 class="font-size-15 mb-1">Kode Ring :</h5>
-                                    <p>{{ $data->kode_ring }}</p>
+                                    <p>{{ $data->kategori->kode_ring }}</p>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +97,8 @@ background-color:#eee;
 
 
                                         <th class="text-end" style="width: 120px;">Total</th>
+                                        <th class="text-end" style="width: 120px;">ID</th>
+
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -116,8 +120,11 @@ background-color:#eee;
                                       
                                         <td>{{ $data->laporan }}</td>
                                         <td>{{ $data->keterangan }}</td>
+                             
                                         <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
-
+                                        <td> @for ($i = 1; $i < $data->stok; $i++)
+                                            <p>{{ $data->kategori->nama_kategori }}{{ $data->created_at->format('H') }}{{ $i }}</p>
+                                            @endfor</td>
                                         
                                     </tr>
                                     <!-- end tr -->
@@ -125,6 +132,9 @@ background-color:#eee;
                                     <!-- end tr -->
                                 </tbody><!-- end tbody -->
                             </table><!-- end table -->
+                            
+                           
+
                         </div><!-- end table responsive -->
                         <div class="d-print-none mt-4">
                             <div class="float-end">
