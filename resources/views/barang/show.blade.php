@@ -122,9 +122,11 @@ background-color:#eee;
                                         <td>{{ $data->keterangan }}</td>
                              
                                         <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
-                                        <td> @for ($i = 1; $i < $data->stok; $i++)
-                                            <p>{{ $data->kategori->nama_kategori }}{{ $data->created_at->format('H') }}{{ $i }}</p>
-                                            @endfor</td>
+                                        <td>
+                                            @foreach ($data->transaksi as $trx)
+                                                <p>{{ $data->kategori->nama_kategori }}{{ $trx->id }}</p>
+                                            @endforeach
+                                        </td>
                                         
                                     </tr>
                                     <!-- end tr -->

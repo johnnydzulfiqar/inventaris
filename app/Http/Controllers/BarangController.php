@@ -8,7 +8,7 @@ use App\Models\Kepala;
 use App\Models\User;
 use App\Models\Keluar;
 use App\Models\Kategori;
-
+use App\Models\Transaksi;
 
 
 use PDF;
@@ -174,7 +174,15 @@ class BarangController extends Controller
         // $data->save();
         // dd($data);
         // Barang::create();
-        Barang::create($input);
+        $barang = Barang::create($input);
+
+        for ($i = 1; $i <= $request->input('stok'); $i++) {
+            Transaksi::create([
+                'barang_id' => $barang->id,
+                'status_barang' => 1
+            ]);
+        }
+
         return redirect('/barang/index')->with('success', 'Data Berhasil Disimpan');
     }
     public function show($id)
