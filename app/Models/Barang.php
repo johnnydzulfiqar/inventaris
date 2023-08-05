@@ -45,7 +45,7 @@ class Barang extends Model
     }
     public function transaksi()
     {
-        return $this->hasMany(Transaksi::class, 'id', 'barang_id');
+        return $this->hasMany(Transaksi::class, 'barang_id', 'id');
     }
     // public function kepala()
     // {

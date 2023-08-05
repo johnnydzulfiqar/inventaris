@@ -176,11 +176,15 @@ class BarangController extends Controller
         // Barang::create();
         $barang = Barang::create($input);
 
+        // $getLatestTransaksiId = Transaksi::latest()->first()->id + 1;
+
         for ($i = 1; $i <= $request->input('stok'); $i++) {
             Transaksi::create([
                 'barang_id' => $barang->id,
+                // 'id_ngaasal' => $barang->kategori . $getLatestTransaksiId,
                 'status_barang' => 1
             ]);
+            // $getLatestTransaksiId++;
         }
 
         return redirect('/barang/index')->with('success', 'Data Berhasil Disimpan');
