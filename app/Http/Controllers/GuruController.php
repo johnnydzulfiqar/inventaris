@@ -10,6 +10,7 @@ use App\Models\Keluar;
 use App\Models\Kepala;
 use App\Models\User;
 use App\Models\Kategori;
+use App\Models\Transaksi;
 
 
 use PDF;
@@ -129,12 +130,20 @@ class GuruController extends Controller
         // dd($data);
         // Barang::create();
 
-        Barang::create(
+        $barang = Barang::create(
             $input
             // [
             //     'user_id' => $request->Auth::id(),
             // ]
         );
+        for ($i = 1; $i <= $request->input('stok'); $i++) {
+            Transaksi::create([
+                'barang_id' => $barang->id,
+                // 'id_ngaasal' => $barang->kategori . $getLatestTransaksiId,
+                'status_barang' => 1
+            ]);
+            // $getLatestTransaksiId++;
+        }
         return redirect('/guru/index')->with('success', 'Data Berhasil Disimpan');
     }
     public function show($id)
