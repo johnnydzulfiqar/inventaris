@@ -104,7 +104,7 @@ background-color:#eee;
                                         {{-- <th scope="row">01</th> --}}
                                         <td>
                                             <div>
-                                                <h5 class="text-truncate font-size-14 mb-1">{{ $data->stok }}</h5>
+                                                <h5 class="text-truncate font-size-14 mb-1">{{ $data2 }}</h5>
                                                 {{-- <p class="text-muted mb-0">Watch, Black</p> --}}
                                             </div>
                                         </td>
@@ -117,9 +117,13 @@ background-color:#eee;
                                         <td>{{ $data->laporan }}</td>
                                         <td>{{ $data->keterangan }}</td>
                                         <td>@currency($data->stok * $data->harga_barang)</td>
-                                        <td> @for ($i = 1; $i < $data->stok; $i++)
-                                            <p>{{ $data->kategori->nama_kategori }}{{ $data->created_at->format('H') }}{{ $i }}</p>
-                                            @endfor
+                                        <td>  @foreach ($data->transaksi as $trx )
+                                            <p>
+                                                <form action="{{ url("/keluar/create/") }}" method="post" enctype="multipart/form-data">
+                                                @csrf {{ $data->kategori->nama_kategori }}{{ $trx->id }}<input type="checkbox" name="status_barang[]" value="0"></p>
+                                                {{-- <input style="display: none;" type="text" hidden name="transaksi_id" value="{{ $trx->id }}" class="form-control"> --}}
+                                            </form>  
+                                        @endforeach
                                         </td>
                                         
                                         
@@ -142,13 +146,13 @@ background-color:#eee;
                     <form action="{{ url('/keluar/create') }}" method="post" enctype="multipart/form-data">
                       @csrf 
                       <input style="display: none;" type="text" hidden name="barang_id" value="{{ $data->id }}" class="form-control">
-                      <label for="stok_keluar">Stok Barang Rusak</label>
+                      {{-- <label for="stok_keluar">Stok Barang Rusak</label>
                       <input style="display" type="text" name="stok_keluar" value="" class="form-control">
                       @error('stok_keluar')
                       <div class="alert alert-danger">
                           {{ $message }}
                       </div>
-                  @enderror
+                  @enderror --}}
                   <label for="keterangan_keluar">Keterangan Kerusakan</label>
                   <textarea  style="display" type="text" name="keterangan_keluar" value="" class="form-control mb-3"></textarea>
                       @error('keterangan_keluar')
@@ -156,7 +160,7 @@ background-color:#eee;
                         <p>Tolong Isi</p>
                       </div>
                   @enderror
-                      <input style="display" type="text" hidden name="stok" value="{{ $data->stok }}" class="form-control">
+                      {{-- <input style="display" type="text" hidden name="stok" value="{{ $data->stok }}" class="form-control"> --}}
                       <input style="display: none;" type="text" hidden name="status" value="Keluar" class="form-control">
                       <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">
                   <button type="submit" class="btn btn-primary btn-lg btn-block">Buat laporan barang keluar</button>

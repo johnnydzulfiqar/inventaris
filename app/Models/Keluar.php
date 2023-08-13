@@ -24,6 +24,10 @@ class Keluar extends Model
     {
         return $this->belongsTo(Barang::class, 'barang_id');
     }
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'barang_id', 'id');
+    }
     // public function user()
     // {
     //     return $this->belongsTo(User::class, 'user_id');

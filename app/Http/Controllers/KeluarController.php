@@ -7,6 +7,8 @@ use App\Models\Barang;
 use App\Models\Kepala;
 use App\Models\User;
 use App\Models\Keluar;
+use App\Models\Transaksi;
+
 
 
 use PDF;
@@ -56,7 +58,10 @@ class KeluarController extends Controller
     public function show($id)
     {
         $data = Barang::findOrfail($id);
-        return view('keluar.show', compact('data'));
+        $data2 = Transaksi::where('barang_id', '=',  $id)
+            ->Where('status_barang', 1)
+            ->count();
+        return view('keluar.show', compact('data', 'data2'));
     }
     public function show2($id)
     {
@@ -75,32 +80,34 @@ class KeluarController extends Controller
         // $keluar->save();
         $rules =
             [
-                'stok_keluar' => 'required|numeric',
+                // 'stok_keluar' => 'required|numeric',
                 'keterangan_keluar' => 'required',
-
             ];
         $this->validate($request, $rules);
         $barang = Barang::find($request->barang_id);
         // $test = $masuk->stok = $request['stok_keluar'] - $barang->stok = $request['stok'];
-        if ($request['stok_keluar'] >= $request['stok']) {
-            throw ValidationException::withMessages([
-                'stok_keluar' => 'Melebihi Stok',
-            ]);
-        } else if ($request['stok_keluar'] < $request['stok']) {
-            $masuk =  new Keluar;
-            $masuk->stok_keluar = $request->stok_keluar;
-            $keluar = Keluar::create([
-                'stok' => $request['stok_keluar'],
-                'status' => $request['status'],
-                'barang_id' => $request['barang_id'],
-                'laporan' => $request['laporan'],
-                'keterangan_keluar' => $request['keterangan_keluar'],
-            ]);
-            $barang->stok = $request['stok'] - $request['stok_keluar'];
-            // dd($barang);
-            $barang->save();
-            return redirect('/guru/index');
-        }
+        $masuk =  new Keluar;
+        $masuk->stok_keluar = $request->stok_keluar;
+        $keluar = Keluar::create([
+            // 'stok' => $request['stok_keluar'],
+            'status' => $request['status'],
+            'barang_id' => $request['barang_id'],
+            'laporan' => $request['laporan'],
+            'keterangan_keluar' => $request['keterangan_keluar'],
+        ]);
+        // $barang->stok = $request['stok'] - $request['stok_keluar'];
+        // dd($barang);
+        // $barang->save();
+        // $filterarray = $request->toArray();
+
+        $transaksi = Transaksi::find($request->barang_id);
+
+        $transaksi->status_barang = $request['status_barang'];
+
+        $transaksi->save();
+        dd($request->all());
+
+        return redirect('/guru/index');
     }
     // public function show($id)
     // {
@@ -115,12 +122,12 @@ class KeluarController extends Controller
     public function update(Barang $barang, Request $request)
     {
         $keluar = Keluar::find($request->id);
-        $keluar->stok = $request->stok;
+        // $keluar->stok = $request->stok;
         $keluar->save();
         // // $stok = Admin::find($request->admin_id);
         // $stok->stok = $request->stok;
         // $stok->save();
-        dd($keluar);
+        // dd($keluar);
         return redirect('/guru/index');
     }
     public function destroy($id)

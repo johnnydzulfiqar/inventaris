@@ -56,7 +56,7 @@ Index User
                       {{-- <th>Foto</th> --}}
                       {{-- <th>Foto Barang</th> --}}
                       <th>Nama Barang</th>
-                      <th>Stok</th>
+                      {{-- <th>Stok</th> --}}
                       {{-- <th>Harga Barang</th> --}}
                       <th>Lokasi Barang</th>
                       <th>Status</th>
@@ -84,7 +84,7 @@ Index User
                       {{-- <td><img src="{{ asset('layout/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" /></td> --}}
                       {{-- <td><img src="{{ $item->barang->foto_barang}}" alt="foto" width="100px"></td> --}}
                       <td>{{ $item->barang->nama_barang }}</td>
-                      <td>{{ $item->stok }}</td>
+                      {{-- <td>{{ $item->stok }}</td> --}}
                       {{-- <td>{{ $item->harga_barang }}</td> --}}
                       <td>{{ $item->barang->ruangan->nama_ruangan }}</td>
                       <td>{{ $item->status }}</td>

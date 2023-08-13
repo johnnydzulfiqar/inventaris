@@ -106,7 +106,7 @@ background-color:#eee;
                                         {{-- <th scope="row">01</th> --}}
                                         <td>
                                             <div>
-                                                <h5 class="text-truncate font-size-14 mb-1">{{ $data->stok }}</h5>
+                                                <h5 class="text-truncate font-size-14 mb-1">{{ $data2 }}</h5>
                                                 {{-- <p class="text-muted mb-0">Watch, Black</p> --}}
                                             </div>
                                         </td>

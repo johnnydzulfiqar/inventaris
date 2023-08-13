@@ -192,7 +192,10 @@ class BarangController extends Controller
     public function show($id)
     {
         $data = Barang::findOrfail($id);
-        return view('barang.show', compact('data'));
+        $data2 = Transaksi::where('barang_id', '=',  $id)
+            ->Where('status_barang', 1)
+            ->count();
+        return view('barang.show', compact('data', 'data2'));
     }
     public function edit(Barang $barang)
     {
