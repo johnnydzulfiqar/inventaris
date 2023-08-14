@@ -95,6 +95,12 @@ class GuruController extends Controller
     }
     public function store(Request $request)
     {
+        // Transaksi::create([
+        //     'barang_id' => 10,
+        //     // 'id_ngaasal' => $barang->kategori . $getLatestTransaksiId,
+        //     'status_barang' => 1
+        // ]);
+        // dd('cicing');
         $rules =
             [
                 'nama_barang' => 'required',
@@ -149,6 +155,12 @@ class GuruController extends Controller
     public function show($id)
     {
         $data = Barang::findOrfail($id);
-        return view('guru.show', compact('data'));
+        $data2 = Transaksi::where('barang_id', '=',  $id)
+            ->where('status_barang', 1)
+            ->count();
+        $data3 = Transaksi::where('barang_id', '=',  $id)
+            ->where('status_barang', 1)
+            ->get();
+        return view('guru.show', compact('data', 'data2', 'data3'));
     }
 }

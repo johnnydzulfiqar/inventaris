@@ -121,7 +121,7 @@ Index User
                                     ><i class="bx bx-edit-alt me-2"></i> Edit</a
                                   > --}}
                                   @if ( auth()->user()->type == 'user') 
-                                  <a class="dropdown-item" href="{{ url("/keluar/$item->id/show2")}}"
+                                  <a class="dropdown-item" href="{{ url("/keluar/$item->barang_id/show2")}}"
                                     ><i class="bx bx-edit-alt me-2"></i> Detail</a>
                                   >
                                   @endif  

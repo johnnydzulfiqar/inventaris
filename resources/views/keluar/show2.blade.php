@@ -97,6 +97,8 @@ background-color:#eee;
 
 
                                         <th class="text-end" style="width: 120px;">Total</th>
+                                        <th>ID</th>
+
                                     </tr>
                                 </thead><!-- end thead -->
                                 <tbody>
@@ -104,7 +106,7 @@ background-color:#eee;
                                         {{-- <th scope="row">01</th> --}}
                                         <td>
                                             <div>
-                                                <h5 class="text-truncate font-size-14 mb-1">{{ $data->stok }}</h5>
+                                                <h5 class="text-truncate font-size-14 mb-1">{{ $countBarang }}</h5>
                                                 {{-- <p class="text-muted mb-0">Watch, Black</p> --}}
                                             </div>
                                         </td>
@@ -120,9 +122,17 @@ background-color:#eee;
                                         <td>{{ $data->keterangan_keluar }}</td>
 
                                         
-                                        
-                                        <td class="text-end">@currency($data->stok * $data->barang->harga_barang)</td>
-
+                                       
+                                        <td class="text-end">@currency($countBarang * $data->barang->harga_barang)</td>
+                                        <td> 
+                                             
+                                            @foreach ($transaksi as $trx )
+                                            <p>
+                                                 {{ $trx->barang->kategori->nama_kategori }}{{ $trx->id }}</p>
+                                                {{-- <input style="display: none;" type="text" hidden name="transaksi_id" value="{{ $trx->id }}" class="form-control"> --}}
+                                           
+                                        @endforeach
+                                        </td>
 
                                         
                                     </tr>

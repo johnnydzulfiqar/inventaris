@@ -29,6 +29,8 @@ background-color:#eee;
 <div class="container mt-5">
 <div class="row">
         <div class="col-lg-12">
+            <form action="{{ url('/keluar/create') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="card">
                 <div class="card-body">
                     <div class="invoice-title">
@@ -117,12 +119,14 @@ background-color:#eee;
                                         <td>{{ $data->laporan }}</td>
                                         <td>{{ $data->keterangan }}</td>
                                         <td>@currency($data->stok * $data->harga_barang)</td>
-                                        <td>  @foreach ($data->transaksi as $trx )
+                                        <td> 
+                                             
+                                            @foreach ($data3 as $trx )
                                             <p>
-                                                <form action="{{ url("/keluar/create/") }}" method="post" enctype="multipart/form-data">
-                                                @csrf {{ $data->kategori->nama_kategori }}{{ $trx->id }}<input type="checkbox" name="status_barang[]" value="0"></p>
+                                               
+                                                 {{ $data->kategori->nama_kategori }}{{ $trx->id }}<input type="checkbox" name="status_barang[]" value="{{ $trx->id }}"></p>
                                                 {{-- <input style="display: none;" type="text" hidden name="transaksi_id" value="{{ $trx->id }}" class="form-control"> --}}
-                                            </form>  
+                                           
                                         @endforeach
                                         </td>
                                         
@@ -143,8 +147,7 @@ background-color:#eee;
                             </div>
                         </div>
                     </div>
-                    <form action="{{ url('/keluar/create') }}" method="post" enctype="multipart/form-data">
-                      @csrf 
+                     
                       <input style="display: none;" type="text" hidden name="barang_id" value="{{ $data->id }}" class="form-control">
                       {{-- <label for="stok_keluar">Stok Barang Rusak</label>
                       <input style="display" type="text" name="stok_keluar" value="" class="form-control">
@@ -164,10 +167,11 @@ background-color:#eee;
                       <input style="display: none;" type="text" hidden name="status" value="Keluar" class="form-control">
                       <input style="display: none;" type="text" hidden name="laporan" value="Belum Konfirmasi" class="form-control">
                   <button type="submit" class="btn btn-primary btn-lg btn-block">Buat laporan barang keluar</button>
-              </form>  
+          
                     
                 </div>
             </div>
+            </form>
         </div><!-- end col -->
     </div>
 </div>

@@ -59,14 +59,38 @@ class KeluarController extends Controller
     {
         $data = Barang::findOrfail($id);
         $data2 = Transaksi::where('barang_id', '=',  $id)
-            ->Where('status_barang', 1)
+            ->where('status_barang', 1)
             ->count();
-        return view('keluar.show', compact('data', 'data2'));
+        $data3 = Transaksi::where('barang_id', '=',  $id)
+            ->where('status_barang', 1)
+            ->get();
+        return view('keluar.show', compact('data', 'data2', 'data3'));
     }
     public function show2($id)
     {
         $data = Keluar::findOrfail($id);
-        return view('keluar.show2', compact('data'));
+        $queryBarang = Barang::query()
+            ->with('kategori')
+            ->join('transaksi', 'transaksi.barang_id', '=', 'barang.id')
+            ->where('keluar_id', $id)
+            ->where('transaksi.status_barang', 0)
+            ->select('barang.*');
+
+        $countBarang = $queryBarang->count();
+        $transaksi = Transaksi::query()
+            ->where('status_barang', 0)
+            ->where('keluar_id', $id)
+            ->get();
+        // dd($barang);
+        // // dd($barang, 'sini kan?');
+        // $data2 = Transaksi::where('barang_id', '=',  $id)
+        //     ->where('status_barang', 0)
+        //     ->count();
+        // $data3 = Transaksi::where('barang_id', '=',  $id)
+        //     ->where('status_barang', 0)
+        //     ->get();
+        // dd($data3);
+        return view('keluar.show2', compact('data', 'transaksi', 'countBarang'));
     }
 
     public function store(Barang $id, Request $request)
@@ -84,7 +108,16 @@ class KeluarController extends Controller
                 'keterangan_keluar' => 'required',
             ];
         $this->validate($request, $rules);
+        // dd($request->all());
+
         $barang = Barang::find($request->barang_id);
+
+        // $transaksi = Transaksi::where('barang_id', $request->barang_id)
+        // ->get();
+
+
+
+
         // $test = $masuk->stok = $request['stok_keluar'] - $barang->stok = $request['stok'];
         $masuk =  new Keluar;
         $masuk->stok_keluar = $request->stok_keluar;
@@ -95,17 +128,22 @@ class KeluarController extends Controller
             'laporan' => $request['laporan'],
             'keterangan_keluar' => $request['keterangan_keluar'],
         ]);
+
+        foreach ($request->get('status_barang') as $statusBarang) {
+            if ($transaksi = Transaksi::find($statusBarang)) {
+                $transaksi->update([
+                    'status_barang' => 0,
+                    'keluar_id' => $keluar->id
+                ]);
+            }
+        }
         // $barang->stok = $request['stok'] - $request['stok_keluar'];
         // dd($barang);
         // $barang->save();
         // $filterarray = $request->toArray();
+        // $transaksi->status_barang = $request['status_barang'];
 
-        $transaksi = Transaksi::find($request->barang_id);
-
-        $transaksi->status_barang = $request['status_barang'];
-
-        $transaksi->save();
-        dd($request->all());
+        // $transaksi->save();
 
         return redirect('/guru/index');
     }

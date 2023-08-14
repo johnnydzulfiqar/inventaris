@@ -12,11 +12,7 @@ class Transaksi extends Model
 
     public $table = "transaksi";
 
-    protected $fillable = [
-        'id',
-        'barang_id',
-        'status_barang'
-    ];
+    protected $guarded = ['id'];
 
     public function barang(): BelongsTo
     {
