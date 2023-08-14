@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
-            $table->foreign('keluar_id')->references('id')->on('keluar');
+            $table->foreign('keluar_id')->references('id')->on('keluar')->onDelete('cascade');
             $table->unsignedBigInteger('keluar_id')->nullable();
-            $table->foreign('barang_id')->references('id')->on('barang');
+            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
             $table->boolean('status_barang')->nullable(); // 1 untuk tersedia, 0 untuk tidak tersedia
             $table->timestamps();
         });
