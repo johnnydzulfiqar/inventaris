@@ -195,7 +195,10 @@ class BarangController extends Controller
         $data2 = Transaksi::where('barang_id', '=',  $id)
             ->where('status_barang', 1)
             ->count();
-        return view('barang.show', compact('data', 'data2'));
+        $data3 = Transaksi::where('barang_id', '=',  $id)
+            ->where('status_barang', 1)
+            ->get();
+        return view('barang.show', compact('data', 'data2', 'data3'));
     }
     public function edit(Barang $barang)
     {

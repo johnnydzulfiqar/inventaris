@@ -7,6 +7,8 @@ use App\Models\Barang;
 use App\Models\Kepala;
 use App\Models\User;
 use App\Models\Keluar;
+use App\Models\Transaksi;
+
 
 use PDF;
 use Illuminate\Support\Facades\File;
@@ -19,12 +21,15 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $userCount = User::count();
-        $barangCount = Barang::all()->sum('stok');
-        $barangkeluarCount = Keluar::all()->sum('stok');
+        $barangCount = Transaksi::all()
+            ->sum('status_barang', 1);
+        $barangkeluarCount = Transaksi::where('status_barang', '=', 0)
+            ->count();
         $stok = Barang::all()->sum('stok');
         $harga = Barang::all()->sum('harga_barang');
         $total = $stok * $harga;
-        $stok_keluar = Keluar::all()->sum('stok');
+        $stok_keluar = Transaksi::where('status_barang', '=', 0)
+            ->count();
         $harga_keluar = Barang::all()->sum('harga_barang');
         $total_keluar = $stok_keluar * $harga_keluar;
         $pending = Barang::all()->where('status', '=', 'Pending')->count('status');

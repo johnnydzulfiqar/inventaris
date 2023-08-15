@@ -123,7 +123,7 @@ background-color:#eee;
                              
                                         <td class="text-end">@currency($data->stok * $data->harga_barang)</td>
                                         <td>
-                                            @foreach ($data->transaksi as $trx)
+                                            @foreach ($data3 as $trx)
                                                 <p>{{ $data->kategori->nama_kategori }}{{ $trx->id }}</p>
                                             @endforeach
                                         </td>
