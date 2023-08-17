@@ -27,11 +27,11 @@ class DashboardController extends Controller
             ->count();
         $stok = Barang::all()->sum('stok');
         $harga = Barang::all()->sum('harga_barang');
-        $total = $stok * $harga;
+        $total = $barangCount * $harga;
         $stok_keluar = Transaksi::where('status_barang', '=', 0)
             ->count();
         $harga_keluar = Barang::all()->sum('harga_barang');
-        $total_keluar = $stok_keluar * $harga_keluar;
+        $total_keluar = $barangkeluarCount * $harga_keluar;
         $pending = Barang::all()->where('status', '=', 'Pending')->count('status');
         $pending_date = Barang::all()->where('status', '=', 'Pending');
         // $total = Barang::all()->sum(DB::raw('stok', '*', 'harga_barang'));
