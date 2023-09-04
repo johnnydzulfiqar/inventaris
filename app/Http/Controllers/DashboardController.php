@@ -28,6 +28,7 @@ class DashboardController extends Controller
         $stok = Barang::all()->sum('stok');
         $harga = Barang::all()->sum('harga_barang');
         $total = $barangCount * $harga;
+        $penyusustan = $total / 100;
         $stok_keluar = Transaksi::where('status_barang', '=', 0)
             ->count();
         $harga_keluar = Barang::all()->sum('harga_barang');
@@ -35,6 +36,6 @@ class DashboardController extends Controller
         $pending = Barang::all()->where('status', '=', 'Pending')->count('status');
         $pending_date = Barang::all()->where('status', '=', 'Pending');
         // $total = Barang::all()->sum(DB::raw('stok', '*', 'harga_barang'));
-        return view('dashboard.index', compact('userCount', 'barangCount', 'barangkeluarCount', 'total', 'total_keluar', 'pending', 'pending_date'));
+        return view('dashboard.index', compact('userCount', 'barangCount', 'barangkeluarCount', 'total', 'total_keluar', 'pending', 'pending_date', 'penyusustan'));
     }
 }

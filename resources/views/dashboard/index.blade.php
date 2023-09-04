@@ -104,6 +104,8 @@ Index User
                   </div>
                   <span class="fw-semibold d-block mb-1">Total Aset</span>
                   <h3 class="card-title mb-2">@currency( $total )</h3>
+                  <h3 class="card-title mb-2">Penyusutan aset 10% per tahun (@currency( $penyusustan ))</h3>
+                  <h3 class="card-title mb-2">Aset tahun depan  (@currency( $total-$penyusustan ))</h3>
                   {{-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
                 </div>
               </div>
